@@ -13,6 +13,8 @@ namespace LabAppLibrary
         public string NomeLab { get; set; }
         public string NomeMaq { get; set; }
         public DateTime dateTime { get; protected set; }
-        public string Ip { get; set; }
+        protected string Ip { get;  set; }
+
+
     }
 }
