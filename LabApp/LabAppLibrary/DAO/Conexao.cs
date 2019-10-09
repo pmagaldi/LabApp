@@ -8,9 +8,16 @@ namespace LabAppLibrary.DAO
     class Conexao
     {
         SqlConnection sql = new SqlConnection();
+        public string DB { get; } = @"Data Source=labappdb.c8nnr2bvs2jz.us-west-1.rds.amazonaws.com;Initial Catalog=LabApp;User ID=admin;Password=1012585pM";
         public Conexao()
         {
-            sql.ConnectionString = @"";
+            sql.ConnectionString = DB;
+        }
+
+        public Conexao(string bancoDados)
+        {
+            DB = bancoDados;
+            sql.ConnectionString = DB;
         }
 
         public SqlConnection conectar()
