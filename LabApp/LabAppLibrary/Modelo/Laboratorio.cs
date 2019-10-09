@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LabAppLibrary
+namespace LabAppLibrary.Modelo
 {
     public class Laboratorio
     {

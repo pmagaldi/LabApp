@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LabAppLibrary
+namespace LabAppLibrary.Modelo
 {
     class Maquina
     {
