@@ -17,14 +17,20 @@ namespace LabApp
             InitializeComponent();
         }
 
+        public TelaPrincipal(string[] lista)
+        {
+            InitializeComponent();
+            comboBoxProb.Items.AddRange(lista);
+        }
+
         private void TelaPrincipal_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ButtonEnviar_Click(object sender, EventArgs e)
         {
-
+            var index = comboBoxProb.SelectedIndex;
         }
     }
 }
