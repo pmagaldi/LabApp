@@ -14,7 +14,12 @@ namespace LabAppLibrary.Modelo
         public string NomeMaq { get; set; }
         public DateTime dateTime { get; protected set; }
         protected string Ip { get;  set; }
+        public int TipoErro { get; set; }
+        public int GrupoErro { get; set; }
 
+        public void fazerRegistro(int index)
+        {
 
+        }
     }
 }
