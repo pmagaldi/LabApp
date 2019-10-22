@@ -20,7 +20,13 @@ namespace LabApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Computername = Environment.MachineName.ToString();
+            Computername = pegarNomePC();
+            pegarIp();
+            Application.Run(new TelaPrincipal(listaErros));
+        }
+
+        static void pegarIp()
+        {
             var host = Dns.GetHostName();
             IPAddress[] ip = Dns.GetHostAddresses(host);
             string padrao = "[1-2]{1}[0-9]{1,2}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}";
@@ -33,7 +39,11 @@ namespace LabApp
                     break;
                 }
             }
-            Application.Run(new TelaPrincipal());
+        }
+
+        static string pegarNomePC()
+        {
+            return Environment.MachineName.ToString();
         }
     }
 }
