@@ -7,10 +7,11 @@ namespace LabAppLibrary.Modelo
         /// <summary>
         /// Classe define uma laborarótio no LabApp
         /// </summary>
+        protected int id { get; set; }
         public string Nome { get; protected set; }
         public int _QtdMaq { get; protected set; }
         public int IdGrupoErro { get; protected set; }
-        public int IdRegistro { get; protected set; }
+
 
         public Laboratorio(string nome, int qtMaq, int Id)
         {
