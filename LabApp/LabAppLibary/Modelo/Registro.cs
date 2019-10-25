@@ -17,9 +17,16 @@ namespace LabAppLibrary.Modelo
         public int IdTipoErro { get; set; }
         public int IdGrupoErro { get; set; }
 
-        public void fazerRegistro(int index)
+        public Registro(string lab, string maq, string ip, int idTipo, int idGrupo)
         {
-
+            NomeLab = lab;
+            NomeMaq = maq;
+            Ip = ip;
+            IdTipoErro = idTipo;
+            IdGrupoErro = idGrupo;
+            Data = DateTime.Today;
         }
+
+        //funções para mudar o registro?
     }
 }
