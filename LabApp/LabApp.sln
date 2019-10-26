@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabApp.Funcionario", "LabAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabAppLibary", "LabAppLibary\LabAppLibary.csproj", "{CEFF398A-8F3B-477D-A797-E25880A1792C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabApp.Aluno(.net Framework)", "LabApp.Aluno(.net Framework)\LabApp.Aluno(.net Framework).csproj", "{2412B6A6-EE51-4AE5-A928-7954976A96D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabApp.Funcionario().net Framework", "LabApp.Funcionario().net Framework\LabApp.Funcionario().net Framework.csproj", "{8363913E-432E-47CB-8A9E-015B37E88AD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{CEFF398A-8F3B-477D-A797-E25880A1792C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEFF398A-8F3B-477D-A797-E25880A1792C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEFF398A-8F3B-477D-A797-E25880A1792C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2412B6A6-EE51-4AE5-A928-7954976A96D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2412B6A6-EE51-4AE5-A928-7954976A96D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2412B6A6-EE51-4AE5-A928-7954976A96D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2412B6A6-EE51-4AE5-A928-7954976A96D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8363913E-432E-47CB-8A9E-015B37E88AD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8363913E-432E-47CB-8A9E-015B37E88AD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8363913E-432E-47CB-8A9E-015B37E88AD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8363913E-432E-47CB-8A9E-015B37E88AD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
