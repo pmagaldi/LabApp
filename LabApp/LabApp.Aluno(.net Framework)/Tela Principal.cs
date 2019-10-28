@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace LabApp.Aluno_.net_Framework_
 {
-    public partial class Form1 : Form
+    public partial class Tela1 : Form
     {
-        public Form1()
+        public Tela1()
         {
             InitializeComponent();
         }
