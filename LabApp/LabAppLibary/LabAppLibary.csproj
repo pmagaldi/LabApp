@@ -36,10 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AWSSDK.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
-      <HintPath>..\packages\AWSSDK.Core.3.3.103.54\lib\net45\AWSSDK.Core.dll</HintPath>
+      <HintPath>..\packages\AWSSDK.Core.3.3.103.56\lib\net45\AWSSDK.Core.dll</HintPath>
     </Reference>
     <Reference Include="AWSSDK.RDS, Version=3.3.0.0, Culture=neutral, PublicKeyToken=885c28607f98e604, processorArchitecture=MSIL">
-      <HintPath>..\packages\AWSSDK.RDS.3.3.112.3\lib\net45\AWSSDK.RDS.dll</HintPath>
+      <HintPath>..\packages\AWSSDK.RDS.3.3.112.5\lib\net45\AWSSDK.RDS.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
@@ -58,7 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\GErrosContext.cs" />
+    <Compile Include="DB\LaboratorioContext.cs" />
+    <Compile Include="DB\MaquinaContext.cs" />
     <Compile Include="DB\RegistroContext.cs" />
+    <Compile Include="DB\TErrosContext.cs" />
     <Compile Include="Modelo\GruposDeErro.cs" />
     <Compile Include="Modelo\Laboratorio.cs" />
     <Compile Include="Modelo\Maquina.cs" />
