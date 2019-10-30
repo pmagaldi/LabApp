@@ -5,6 +5,8 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LabAppLibary.DB;
+using LabAppLibrary.Modelo;
 
 namespace LabApp
 {
@@ -12,6 +14,7 @@ namespace LabApp
     {
         public static string Ip { get; set; }
         public static string Computername { get; set; }
+        public static string[] Lista { get; set; }
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -22,10 +25,35 @@ namespace LabApp
             Application.SetCompatibleTextRenderingDefault(false);
             Computername = pegarNomePC();
             pegarIp();
-            Application.Run(new TelaPrincipal(listaErros));
+            Maquina maq = new Maquina(Computername, Ip, pegarIdLab(Computername, Ip));
+            listaTipoErro(maq);
+            Application.Run(new TelaPrincipal(Lista));
         }
 
-        static void pegarIp()
+        static void listaTipoErro(Maquina maq)
+        {
+            
+            using (var repo = new TErrosContext("RDSDBContext"))
+            {
+
+            }
+        }
+
+        static int pegarIdLab(string nome, string ip)
+        {
+            using (var repo = new MaquinaContext("RDSDBContext"))
+            {
+                IList<Maquina> maquinas = repo.Maquinas.ToList();
+                foreach (var item in maquinas)
+                {
+                    if (item.Nome == nome && item.Ip == ip)
+                        return item.IdLab;
+                }
+            }
+            return -1;
+        }
+
+        static string pegarIp()
         {
             var host = Dns.GetHostName();
             IPAddress[] ip = Dns.GetHostAddresses(host);
@@ -39,6 +67,7 @@ namespace LabApp
                     break;
                 }
             }
+            return Ip.ToString();
         }
 
         static string pegarNomePC()

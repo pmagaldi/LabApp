@@ -21,7 +21,6 @@ namespace LabAppLibrary.Modelo
         /// <param name="tipoErro"></param>
         /// <param name="ip"></param>
         /// <param name="lab"></param>
-
         public Maquina(string nome, string ip, int lab)
         {
             if(nome == null || ip==null || lab <= 0)
@@ -29,6 +28,18 @@ namespace LabAppLibrary.Modelo
             Nome = nome;
             Ip = ip;
             IdLab = lab;
+        }
+        /// <summary>
+        /// Contrutor de uma máquina no laboratório de informática.
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <param name="ip"></param>
+        public Maquina(string nome, string ip)
+        {
+            if (nome == null || ip == null)
+                throw new ArgumentException("Erro nos argumentos do construtor da classe Maquina");
+            Nome = nome;
+            Ip = ip;
         }
         /// <summary>
         /// Método para alterar o Nome da máquina no banco de dados e no objeto.

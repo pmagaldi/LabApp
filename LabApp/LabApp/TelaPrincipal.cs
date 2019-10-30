@@ -12,9 +12,17 @@ namespace LabApp
 {
     public partial class TelaPrincipal : Form
     {
+        public int Ip { get; set; }
+
         public TelaPrincipal()
         {
             InitializeComponent();
+        }
+
+        public TelaPrincipal(int ip)
+        {
+            InitializeComponent();
+            Ip = ip;
         }
 
         public TelaPrincipal(string[] lista)
@@ -30,7 +38,8 @@ namespace LabApp
 
         private void ButtonEnviar_Click(object sender, EventArgs e)
         {
-            var index = comboBoxProb.SelectedIndex;
+            //var index = comboBoxProb.SelectedIndex;
+            MessageBox.Show(Ip.ToString());
         }
     }
 }

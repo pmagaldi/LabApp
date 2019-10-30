@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LabAppLibary.DB
 {
-    class RegistroContext : DbContext
+    public class RegistroContext : DbContext
     {
         public RegistroContext(string nomeDB) : base(nomeDB)
         {

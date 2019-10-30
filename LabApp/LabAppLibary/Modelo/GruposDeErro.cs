@@ -4,9 +4,9 @@ using System.Text;
 
 namespace LabAppLibrary.Modelo
 {
-    class GruposDeErro
+    public class GruposDeErro
     {
-        public int Id { get; set; }
+        public int Id { get; internal set; }
         public int IdGrupo { get; set; }
         public int TipoErro { get; set; }
 

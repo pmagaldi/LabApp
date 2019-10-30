@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LabAppLibrary.Modelo
 {
-    class Registro
+    public class Registro
     {
         /// <summary>
         /// Define o registro de erro em uma laboratório de informática

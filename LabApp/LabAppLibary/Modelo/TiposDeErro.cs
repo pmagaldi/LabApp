@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LabAppLibrary.Modelo
 {
-    class TiposDeErro
+    public class TiposDeErro
     {
         public int Id { get; set; }
         public string Nome { get; set; }

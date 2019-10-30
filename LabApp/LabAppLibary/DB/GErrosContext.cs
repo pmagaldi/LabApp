@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LabAppLibary.DB
 {
-    class GErrosContext : DbContext
+    public class GErrosContext : DbContext
     {
         public GErrosContext(string nomeDb) : base(nomeDb)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LabAppLibary.DB
 {
-    class TErrosContext : DbContext
+    public class TErrosContext : DbContext
     {
         public TErrosContext(string nomeDb) : base(nomeDb)
         {

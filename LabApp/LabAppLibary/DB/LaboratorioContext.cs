@@ -8,7 +8,7 @@ using LabAppLibrary.Modelo;
 
 namespace LabAppLibary.DB
 {
-    class LaboratorioContext : DbContext
+    public class LaboratorioContext : DbContext
     {
         public LaboratorioContext(string nomeDb): base(nomeDb)
         {
