@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LabAppLibary.DB
 {
-    class MaquinaContext : DbContext
+    public class MaquinaContext : DbContext
     {
         public MaquinaContext(string nomeDb) : base(nomeDb)
         {

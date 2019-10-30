@@ -4,14 +4,15 @@ using System.Text;
 
 namespace LabAppLibrary.Modelo
 {
-    class Maquina
+    public class Maquina
     {
         /// <summary>
         /// Classe define uma máquina no LabApp
         /// </summary>
-        protected int id { get; set; }
+        public int id { get; internal set; }
         public string Nome { get; set; }
         public string Ip { get; protected set; }
+        public int IdLab { get; protected set; }
 
         /// <summary>
         /// Contrutor de uma máquina no laboratório de informática.
@@ -19,14 +20,15 @@ namespace LabAppLibrary.Modelo
         /// <param name="nome"></param>
         /// <param name="tipoErro"></param>
         /// <param name="ip"></param>
+        /// <param name="lab"></param>
 
-        public Maquina(string nome, int tipoErro, string ip)
+        public Maquina(string nome, string ip, int lab)
         {
-            if(nome == null || tipoErro == null || ip==null)
+            if(nome == null || ip==null || lab <= 0)
                 throw new ArgumentException("Erro nos argumentos do construtor da classe Maquina");
             Nome = nome;
-            QtiposErros = tipoErro;
             Ip = ip;
+            IdLab = lab;
         }
         /// <summary>
         /// Método para alterar o Nome da máquina no banco de dados e no objeto.
@@ -47,6 +49,16 @@ namespace LabAppLibrary.Modelo
             if (novoIp == null)
                 throw new ArgumentException($"Valor do atributo {nameof(novoIp)} é inválido");
             Ip = novoIp;
+        }
+        /// <summary>
+        /// Método para alterar o Id do laboratório de uma máquina no banco de dados e no objeto.
+        /// </summary>
+        /// <param name="id"></param>
+        public void MudarIdLab(int id)
+        {
+            if(id <= 0)
+                throw new ArgumentException($"Valor do atributo {nameof(id)} é inválido");
+            IdLab = id;
         }
     }
 }

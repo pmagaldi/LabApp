@@ -16,5 +16,11 @@ namespace LabApp.Funcionario
         {
             InitializeComponent();
         }
+
+        private void btnCadastroMaq_Click(object sender, EventArgs e)
+        {
+            Views.TelaCadastroMaq telaCadastroMaq = new Views.TelaCadastroMaq();
+            telaCadastroMaq.ShowDialog();
+        }
     }
 }
