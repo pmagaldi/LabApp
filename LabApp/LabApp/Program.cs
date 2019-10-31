@@ -31,10 +31,29 @@ namespace LabApp
         }
 
         static void listaTipoErro(Maquina maq)
-        {            
+        {
+            //primeiro pegar lab
+            IList<GruposDeErro> GruposErrosSelecionados = new List<GruposDeErro>();
+            using (var Labcont = new LaboratorioContext("RDSDBContext"))
+            {
+                var lab = Labcont.Laboratorios.FirstOrDefault(c => c.id == maq.IdLab);
+                using (var GrupoCont = new GErrosContext("RDSDBContext"))
+                {
+                    IList<GruposDeErro> TodoErros = GrupoCont.GruposErro.ToList();                    
+                    foreach (var item in TodoErros)
+                    {
+                        if (item.IdGrupo == lab.IdGrupoErro)
+                            GruposErrosSelecionados.Add(item);
+                    }
+                }
+            }
             using (var repo = new TErrosContext("RDSDBContext"))
             {
-
+                IList<TiposDeErro> erros = repo.TiposErro.ToList();
+                foreach (var item in erros)
+                {
+                    if(item.Id == )
+                }
             }
         }
 

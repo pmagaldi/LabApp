@@ -7,7 +7,7 @@ namespace LabAppLibrary.Modelo
         /// <summary>
         /// Classe define um laborarótio no LabApp
         /// </summary>
-        protected int id { get; set; }
+        public int id { get;internal set; }
         public string Nome { get; protected set; }
         public int _QtdMaq { get; protected set; }
         public int IdGrupoErro { get; protected set; }

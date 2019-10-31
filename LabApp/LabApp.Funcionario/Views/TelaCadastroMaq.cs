@@ -42,7 +42,7 @@ namespace LabApp.Funcionario.Views
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
-        {
+        {            
             if(checkBoxNome.Checked)
             {
                 try
@@ -54,6 +54,7 @@ namespace LabApp.Funcionario.Views
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
                             maqContext.SaveChanges();
+                            MessageBox.Show("Realizado com sucesso!");
                         }
                     }
                 }
@@ -71,9 +72,10 @@ namespace LabApp.Funcionario.Views
                     {
                         var item = maqContext.Maquinas.FirstOrDefault(c => c.Ip == textBoxIp.Text.ToString());
                         if (item != null)
-                        {
+                        {                            
                             item.MudarIdLab(Convert.ToInt32(textBoxLab.Text.ToString()));
                             maqContext.SaveChanges();
+                            MessageBox.Show("Realizado com sucesso!");
                         }
                     }
                 }
@@ -94,6 +96,7 @@ namespace LabApp.Funcionario.Views
                         {
                             item.MudarIp(textBoxIp.Text.ToString());
                             maqContext.SaveChanges();
+                            MessageBox.Show("Realizado com sucesso!");
                         }
                     }
                 }
