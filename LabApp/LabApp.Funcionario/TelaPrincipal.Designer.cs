@@ -46,39 +46,39 @@
             // 
             // btnCadastroMaq
             // 
-            this.btnCadastroMaq.Location = new System.Drawing.Point(92, 113);
+            this.btnCadastroMaq.Location = new System.Drawing.Point(70, 113);
             this.btnCadastroMaq.Name = "btnCadastroMaq";
-            this.btnCadastroMaq.Size = new System.Drawing.Size(122, 24);
+            this.btnCadastroMaq.Size = new System.Drawing.Size(167, 24);
             this.btnCadastroMaq.TabIndex = 1;
-            this.btnCadastroMaq.Text = "Cadastrar Maquina";
+            this.btnCadastroMaq.Text = "Cadastrar\\Alterar Maquina";
             this.btnCadastroMaq.UseVisualStyleBackColor = true;
             this.btnCadastroMaq.Click += new System.EventHandler(this.btnCadastroMaq_Click);
             // 
             // btnCadastroLab
             // 
-            this.btnCadastroLab.Location = new System.Drawing.Point(92, 143);
+            this.btnCadastroLab.Location = new System.Drawing.Point(70, 143);
             this.btnCadastroLab.Name = "btnCadastroLab";
-            this.btnCadastroLab.Size = new System.Drawing.Size(123, 24);
+            this.btnCadastroLab.Size = new System.Drawing.Size(167, 24);
             this.btnCadastroLab.TabIndex = 2;
-            this.btnCadastroLab.Text = "Cadastrar Laboratório";
+            this.btnCadastroLab.Text = "Cadastrar\\Alterar Laboratório";
             this.btnCadastroLab.UseVisualStyleBackColor = true;
             // 
             // btnCadastroTipo
             // 
-            this.btnCadastroTipo.Location = new System.Drawing.Point(92, 173);
+            this.btnCadastroTipo.Location = new System.Drawing.Point(70, 173);
             this.btnCadastroTipo.Name = "btnCadastroTipo";
-            this.btnCadastroTipo.Size = new System.Drawing.Size(123, 23);
+            this.btnCadastroTipo.Size = new System.Drawing.Size(167, 23);
             this.btnCadastroTipo.TabIndex = 3;
-            this.btnCadastroTipo.Text = "Add Tipo de Erro";
+            this.btnCadastroTipo.Text = "Add\\Alterar Tipo de Erro";
             this.btnCadastroTipo.UseVisualStyleBackColor = true;
             // 
             // btnCadastroGrupo
             // 
-            this.btnCadastroGrupo.Location = new System.Drawing.Point(91, 202);
+            this.btnCadastroGrupo.Location = new System.Drawing.Point(70, 202);
             this.btnCadastroGrupo.Name = "btnCadastroGrupo";
-            this.btnCadastroGrupo.Size = new System.Drawing.Size(123, 23);
+            this.btnCadastroGrupo.Size = new System.Drawing.Size(167, 23);
             this.btnCadastroGrupo.TabIndex = 4;
-            this.btnCadastroGrupo.Text = "Add Grupo de Erro";
+            this.btnCadastroGrupo.Text = "Add\\Alterar Grupo de Erro";
             this.btnCadastroGrupo.UseVisualStyleBackColor = true;
             // 
             // TelaPrincipal

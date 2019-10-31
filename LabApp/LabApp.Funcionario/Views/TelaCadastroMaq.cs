@@ -25,11 +25,68 @@ namespace LabApp.Funcionario.Views
             string nome = textBoxNome.Text.ToString();
             string ip = textBoxIp.Text.ToString();
             int id = Convert.ToInt32(textBoxLab.Text.ToString());
-            using (var maqContext = new MaquinaContext("RDSDBContext"))
+            try
             {
-                maqContext.Maquinas.Add(maq = new Maquina(nome, ip, id));
-                maqContext.SaveChanges();
-                MessageBox.Show("Realizado com sucesso!");
+                using (var maqContext = new MaquinaContext("RDSDBContext"))
+                {
+                    maqContext.Maquinas.Add(maq = new Maquina(nome, ip, id));
+                    maqContext.SaveChanges();
+                    MessageBox.Show("Realizado com sucesso!");
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if(checkBoxNome.Checked)
+            {
+                try
+                {
+                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    {
+                        var item = maqContext.Maquinas.FirstOrDefault(c => c.Ip == textBoxIp.Text.ToString());
+                        if(item != null)
+                        {
+                            item.MudarNome(textBoxNome.Text.ToString());
+                            maqContext.Maquinas.Add(item);
+                            maqContext.SaveChanges();
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
+                }
+            }
+            if (checkBoxLab.Checked)
+            {
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
+                }
+            }
+            if (checkBoxIp.Checked)
+            {
+                try
+                {
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
+                }
             }
         }
     }

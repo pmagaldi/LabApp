@@ -41,6 +41,16 @@ namespace LabAppLibrary.Modelo
             Nome = nome;
             Ip = ip;
         }
+        public Maquina(string ip)
+        {
+            if (ip == null)
+                throw new ArgumentException("Erro nos argumentos do construtor da classe Maquina");
+            Ip = ip;
+        }
+        public Maquina()
+        {
+
+        }
         /// <summary>
         /// Método para alterar o Nome da máquina no banco de dados e no objeto.
         /// </summary>
