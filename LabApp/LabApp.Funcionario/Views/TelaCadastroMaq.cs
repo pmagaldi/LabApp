@@ -53,7 +53,6 @@ namespace LabApp.Funcionario.Views
                         if(item != null)
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
-                            maqContext.Maquinas.Add(item);
                             maqContext.SaveChanges();
                         }
                     }
@@ -68,7 +67,15 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-
+                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    {
+                        var item = maqContext.Maquinas.FirstOrDefault(c => c.Ip == textBoxIp.Text.ToString());
+                        if (item != null)
+                        {
+                            item.MudarIdLab(Convert.ToInt32(textBoxLab.Text.ToString()));
+                            maqContext.SaveChanges();
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -80,7 +87,15 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-
+                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    {
+                        var item = maqContext.Maquinas.FirstOrDefault(c => c.Nome == textBoxNome.Text.ToString());
+                        if (item != null)
+                        {
+                            item.MudarIp(textBoxIp.Text.ToString());
+                            maqContext.SaveChanges();
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
