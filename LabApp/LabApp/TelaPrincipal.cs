@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabAppLibrary.Modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,22 +13,23 @@ namespace LabApp
 {
     public partial class TelaPrincipal : Form
     {
-        public int Ip { get; set; }
+        public Maquina maq;
 
         public TelaPrincipal()
         {
             InitializeComponent();
         }
 
-        public TelaPrincipal(int ip)
+        public TelaPrincipal(Maquina maquina)
         {
             InitializeComponent();
-            Ip = ip;
+            maq = maquina;
         }
 
-        public TelaPrincipal(string[] lista)
+        public TelaPrincipal(Maquina maquina,string[] lista)
         {
             InitializeComponent();
+            maq = maquina;
             comboBoxProb.Items.AddRange(lista);
         }
 
@@ -39,7 +41,7 @@ namespace LabApp
         private void ButtonEnviar_Click(object sender, EventArgs e)
         {
             //var index = comboBoxProb.SelectedIndex;
-            MessageBox.Show(Ip.ToString());
+            MessageBox.Show(maq.Ip.ToString());
         }
     }
 }

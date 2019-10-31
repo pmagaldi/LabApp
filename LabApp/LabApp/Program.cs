@@ -24,15 +24,14 @@ namespace LabApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Computername = pegarNomePC();
-            pegarIp();
+            Ip = pegarIp();
             Maquina maq = new Maquina(Computername, Ip, pegarIdLab(Computername, Ip));
-            listaTipoErro(maq);
-            Application.Run(new TelaPrincipal(Lista));
+            //listaTipoErro(maq);
+            Application.Run(new TelaPrincipal(maq));
         }
 
         static void listaTipoErro(Maquina maq)
-        {
-            
+        {            
             using (var repo = new TErrosContext("RDSDBContext"))
             {
 
@@ -43,14 +42,9 @@ namespace LabApp
         {
             using (var repo = new MaquinaContext("RDSDBContext"))
             {
-                IList<Maquina> maquinas = repo.Maquinas.ToList();
-                foreach (var item in maquinas)
-                {
-                    if (item.Nome == nome && item.Ip == ip)
-                        return item.IdLab;
-                }
+                var maquina = repo.Maquinas.FirstOrDefault(c => c.Ip == ip);
+                return maquina.IdLab;
             }
-            return -1;
         }
 
         static string pegarIp()

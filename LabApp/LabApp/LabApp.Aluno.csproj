@@ -97,10 +97,6 @@
       <Project>{ceff398a-8f3b-477d-a797-e25880a1792c}</Project>
       <Name>LabAppLibary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LabAppLibrary\LabAppLibrary.csproj">
-      <Project>{82186925-1c00-46c7-b3aa-db710d096387}</Project>
-      <Name>LabAppLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
