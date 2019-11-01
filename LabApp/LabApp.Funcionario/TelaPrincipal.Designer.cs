@@ -74,7 +74,7 @@
             this.btnCadastroTipo.Name = "btnCadastroTipo";
             this.btnCadastroTipo.Size = new System.Drawing.Size(167, 23);
             this.btnCadastroTipo.TabIndex = 3;
-            this.btnCadastroTipo.Text = "Add\\Alterar Tipo de Erro";
+            this.btnCadastroTipo.Text = "Adicionar Tipo de Erro";
             this.btnCadastroTipo.UseVisualStyleBackColor = true;
             // 
             // btnCadastroGrupo
@@ -83,7 +83,7 @@
             this.btnCadastroGrupo.Name = "btnCadastroGrupo";
             this.btnCadastroGrupo.Size = new System.Drawing.Size(167, 23);
             this.btnCadastroGrupo.TabIndex = 4;
-            this.btnCadastroGrupo.Text = "Add\\Alterar Grupo de Erro";
+            this.btnCadastroGrupo.Text = "Adicionar Grupo de Erro";
             this.btnCadastroGrupo.UseVisualStyleBackColor = true;
             // 
             // btnRemoverMaq

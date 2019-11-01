@@ -14,6 +14,7 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaCadastroLab : Form
     {
+        Laboratorio lab;
         public TelaCadastroLab()
         {
             InitializeComponent();
@@ -34,6 +35,97 @@ namespace LabApp.Funcionario.Views
                 }
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
+            }
+        }
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            string contexto = "RDSDBContext";
+            if (checkBoxNome.Checked)
+            {
+                try
+                {
+                    using (var laboratorioContext = new LaboratorioContext(contexto))
+                    {
+                        var item = laboratorioContext.Laboratorios.FirstOrDefault(c => c.id == lab.id);
+                        if (item != null)
+                        {
+                            item.MudarNome(textBoxNome.Text.ToString());
+                            laboratorioContext.SaveChanges();
+                            MessageBox.Show("Realizado com sucesso!");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
+                }
+            }
+            if(checkBoxQtd.Checked)
+            {
+                try
+                {
+                    using (var laboratorioContext = new LaboratorioContext(contexto))
+                    {
+                        var item = laboratorioContext.Laboratorios.FirstOrDefault(c => c.id == lab.id);
+                        if (item != null)
+                        {
+                            item.MudarQtd(Convert.ToInt32(textBoxQtd.Text.ToString()));
+                            laboratorioContext.SaveChanges();
+                            MessageBox.Show("Realizado com sucesso!");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
+                }
+            }
+            if (checkBoxId.Checked)
+            {
+                try
+                {
+                    using (var laboratorioContext = new LaboratorioContext(contexto))
+                    {
+                        var item = laboratorioContext.Laboratorios.FirstOrDefault(c => c.id == lab.id);
+                        if (item != null)
+                        {
+                            item.MudarGrupoErro(Convert.ToInt32(textBoxGrupo.Text.ToString()));
+                            laboratorioContext.SaveChanges();
+                            MessageBox.Show("Realizado com sucesso!");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.StackTrace);
+                }
+            }
+        }
+
+        private void btnProcurar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var labContext = new LaboratorioContext("RDSDBContext"))
+                {
+                    IList<Laboratorio> labs = labContext.Laboratorios.ToList();
+                    string[] Lista = new string[labs.Count];
+                    int index = 0;
+                    foreach (var item in labs)
+                    {
+                        Lista[index] = labs.Select(c => c.id + c.Nome).ToString();
+                    }
+                    comboBoxLabs.Items.AddRange(Lista);
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 MessageBox.Show(ex.StackTrace);
