@@ -26,35 +26,36 @@ namespace LabApp
             Computername = pegarNomePC();
             Ip = pegarIp();
             Maquina maq = new Maquina(Computername, Ip, pegarIdLab(Computername, Ip));
-            //listaTipoErro(maq);
-            Application.Run(new TelaPrincipal(maq));
+            listaTipoErro(maq);
+            Application.Run(new TelaPrincipal(maq,Lista));
         }
 
         static void listaTipoErro(Maquina maq)
         {
             //primeiro pegar lab
-            IList<GruposDeErro> GruposErrosSelecionados = new List<GruposDeErro>();
             using (var Labcont = new LaboratorioContext("RDSDBContext"))
             {
                 var lab = Labcont.Laboratorios.FirstOrDefault(c => c.id == maq.IdLab);
                 using (var GrupoCont = new GErrosContext("RDSDBContext"))
                 {
-                    IList<GruposDeErro> TodoErros = GrupoCont.GruposErro.ToList();                    
-                    foreach (var item in TodoErros)
+                    IList<GruposDeErro> TodoErros = GrupoCont.GruposErro.Where(c => c.IdGrupo == lab.IdGrupoErro).ToList();
+                    List<int> idDeTodoErros = TodoErros.Select(s => s.IdTipoErro).ToList();
+                    using (var tErros = new TErrosContext("RDSDBContext"))
                     {
-                        if (item.IdGrupo == lab.IdGrupoErro)
-                            GruposErrosSelecionados.Add(item);
+                        IList<TiposDeErro> tiposDeErros = tErros.TiposErro.ToList();
+                        Lista = new string[tiposDeErros.Count];
+                        int index = 0;
+                        foreach (var item in idDeTodoErros)
+                        {
+                            if (tiposDeErros.Select(c => c.Id).Equals(item))
+                            {
+                                Lista[index] = tiposDeErros.Select(c => c.Nome).ToString();
+                                index++;
+                            }                                
+                        }
                     }
                 }
-            }
-            using (var repo = new TErrosContext("RDSDBContext"))
-            {
-                IList<TiposDeErro> erros = repo.TiposErro.ToList();
-                foreach (var item in erros)
-                {
-                    if(item.Id == )
-                }
-            }
+            }            
         }
 
         static int pegarIdLab(string nome, string ip)

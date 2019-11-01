@@ -40,8 +40,7 @@ namespace LabApp
 
         private void ButtonEnviar_Click(object sender, EventArgs e)
         {
-            //var index = comboBoxProb.SelectedIndex;
-            MessageBox.Show(maq.Ip.ToString());
+            var index = comboBoxProb.SelectedIndex;
         }
     }
 }

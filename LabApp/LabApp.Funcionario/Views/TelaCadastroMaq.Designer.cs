@@ -36,6 +36,7 @@
             this.checkBoxLab = new System.Windows.Forms.CheckBox();
             this.checkBoxIp = new System.Windows.Forms.CheckBox();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.textAtencao = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxNome
@@ -109,11 +110,23 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // textAtencao
+            // 
+            this.textAtencao.AutoSize = true;
+            this.textAtencao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textAtencao.ForeColor = System.Drawing.Color.Red;
+            this.textAtencao.Location = new System.Drawing.Point(40, 9);
+            this.textAtencao.Name = "textAtencao";
+            this.textAtencao.Size = new System.Drawing.Size(295, 20);
+            this.textAtencao.TabIndex = 11;
+            this.textAtencao.Text = "Selecionar somente um tipo para alterar!";
+            // 
             // TelaCadastroMaq
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(380, 239);
+            this.Controls.Add(this.textAtencao);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.checkBoxIp);
             this.Controls.Add(this.checkBoxLab);
@@ -139,5 +152,6 @@
         private System.Windows.Forms.CheckBox checkBoxLab;
         private System.Windows.Forms.CheckBox checkBoxIp;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label textAtencao;
     }
 }
