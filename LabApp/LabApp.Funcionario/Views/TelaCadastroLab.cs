@@ -14,7 +14,7 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaCadastroLab : Form
     {
-        Laboratorio lab;
+        List<Laboratorio> lab;
         public TelaCadastroLab()
         {
             InitializeComponent();
@@ -49,8 +49,8 @@ namespace LabApp.Funcionario.Views
                 try
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
-                    {
-                        var item = laboratorioContext.Laboratorios.FirstOrDefault(c => c.id == lab.id);
+                    {                        
+                        var item = laboratorioContext.Laboratorios.Where(c => c.id == );
                         if (item != null)
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
@@ -115,12 +115,14 @@ namespace LabApp.Funcionario.Views
             {
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
                 {
-                    IList<Laboratorio> labs = labContext.Laboratorios.ToList();
-                    string[] Lista = new string[labs.Count];
+                    lab = labContext.Laboratorios.ToList();
+                    List<string> nomes = labContext.Laboratorios.Select(c => c.Nome).ToList();
+                    string[] Lista = new string[nomes.Count];
                     int index = 0;
-                    foreach (var item in labs)
+                    foreach (var item in nomes)
                     {
-                        Lista[index] = labs.Select(c => c.id + c.Nome).ToString();
+                        Lista[index] = item;
+                        index++;
                     }
                     comboBoxLabs.Items.AddRange(Lista);
                 }
@@ -128,7 +130,8 @@ namespace LabApp.Funcionario.Views
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                MessageBox.Show(ex.StackTrace);
+                Console.WriteLine(ex.StackTrace);
+            
             }
         }
     }

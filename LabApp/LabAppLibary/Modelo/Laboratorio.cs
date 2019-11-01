@@ -8,9 +8,9 @@ namespace LabAppLibrary.Modelo
         /// Classe define um laborarótio no LabApp
         /// </summary>
         public int id { get;internal set; }
-        public string Nome { get; protected set; }
-        public int _QtdMaq { get; protected set; }
-        public int IdGrupoErro { get; protected set; }
+        public string Nome { get;  set; }
+        public int _QtdMaq { get;  set; }
+        public int IdGrupoErro { get;  set; }
 
         /// <summary>
         /// Construtor de um laboratório de informática.
@@ -26,6 +26,10 @@ namespace LabAppLibrary.Modelo
             Nome = nome;
             _QtdMaq = qtMaq;
             IdGrupoErro = Id;
+        }
+        public Laboratorio()
+        {
+
         }
         /// <summary>
         /// Metódo para alterar o valor da quantidade de máquina no banco de dados e no objeto.
