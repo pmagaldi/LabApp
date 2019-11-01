@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastroMaq));
             this.textBoxNome = new System.Windows.Forms.TextBox();
             this.textBoxLab = new System.Windows.Forms.TextBox();
             this.textBoxIp = new System.Windows.Forms.TextBox();
@@ -135,6 +136,7 @@
             this.Controls.Add(this.textBoxIp);
             this.Controls.Add(this.textBoxLab);
             this.Controls.Add(this.textBoxNome);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaCadastroMaq";
             this.Text = "TelaCadastroMaq";
             this.ResumeLayout(false);
