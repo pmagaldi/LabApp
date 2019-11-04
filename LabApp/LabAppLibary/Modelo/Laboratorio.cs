@@ -27,6 +27,9 @@ namespace LabAppLibrary.Modelo
             _QtdMaq = qtMaq;
             IdGrupoErro = Id;
         }
+        /// <summary>
+        /// Construtor de um laboratório de informática. Para ser usado pelo entity framework
+        /// </summary>
         public Laboratorio()
         {
 

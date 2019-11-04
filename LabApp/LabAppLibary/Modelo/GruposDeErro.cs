@@ -23,5 +23,10 @@ namespace LabAppLibrary.Modelo
             IdGrupo = id;
             IdTipoErro = idTipo;
         }
+
+        public GruposDeErro()
+        {
+
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxRegistro = new System.Windows.Forms.ListBox();
             this.btnCadastroMaq = new System.Windows.Forms.Button();
             this.btnCadastroLab = new System.Windows.Forms.Button();
             this.btnCadastroTipo = new System.Windows.Forms.Button();
@@ -40,13 +40,13 @@
             this.btnRemoverGrupo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listBoxRegistro
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(137, 12);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 0;
+            this.listBoxRegistro.FormattingEnabled = true;
+            this.listBoxRegistro.Location = new System.Drawing.Point(137, 12);
+            this.listBoxRegistro.Name = "listBoxRegistro";
+            this.listBoxRegistro.Size = new System.Drawing.Size(120, 95);
+            this.listBoxRegistro.TabIndex = 0;
             // 
             // btnCadastroMaq
             // 
@@ -76,6 +76,7 @@
             this.btnCadastroTipo.TabIndex = 3;
             this.btnCadastroTipo.Text = "Adicionar Tipo de Erro";
             this.btnCadastroTipo.UseVisualStyleBackColor = true;
+            this.btnCadastroTipo.Click += new System.EventHandler(this.btnCadastroTipo_Click);
             // 
             // btnCadastroGrupo
             // 
@@ -85,6 +86,7 @@
             this.btnCadastroGrupo.TabIndex = 4;
             this.btnCadastroGrupo.Text = "Adicionar Grupo de Erro";
             this.btnCadastroGrupo.UseVisualStyleBackColor = true;
+            this.btnCadastroGrupo.Click += new System.EventHandler(this.btnCadastroGrupo_Click);
             // 
             // btnRemoverMaq
             // 
@@ -94,6 +96,7 @@
             this.btnRemoverMaq.TabIndex = 5;
             this.btnRemoverMaq.Text = "Remover Maquina";
             this.btnRemoverMaq.UseVisualStyleBackColor = true;
+            this.btnRemoverMaq.Click += new System.EventHandler(this.btnRemoverMaq_Click);
             // 
             // btnRemoverLab
             // 
@@ -103,6 +106,7 @@
             this.btnRemoverLab.TabIndex = 6;
             this.btnRemoverLab.Text = "Remover Laboratório";
             this.btnRemoverLab.UseVisualStyleBackColor = true;
+            this.btnRemoverLab.Click += new System.EventHandler(this.btnRemoverLab_Click);
             // 
             // btnRemoverTipo
             // 
@@ -112,6 +116,7 @@
             this.btnRemoverTipo.TabIndex = 7;
             this.btnRemoverTipo.Text = "Remover Tipo de Erro";
             this.btnRemoverTipo.UseVisualStyleBackColor = true;
+            this.btnRemoverTipo.Click += new System.EventHandler(this.btnRemoverTipo_Click);
             // 
             // btnRemoverGrupo
             // 
@@ -121,6 +126,7 @@
             this.btnRemoverGrupo.TabIndex = 8;
             this.btnRemoverGrupo.Text = "Remover Grupo de Erro";
             this.btnRemoverGrupo.UseVisualStyleBackColor = true;
+            this.btnRemoverGrupo.Click += new System.EventHandler(this.btnRemoverGrupo_Click);
             // 
             // TelaPrincipal
             // 
@@ -135,7 +141,8 @@
             this.Controls.Add(this.btnCadastroTipo);
             this.Controls.Add(this.btnCadastroLab);
             this.Controls.Add(this.btnCadastroMaq);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxRegistro);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaPrincipal";
             this.Text = "LabApp";
@@ -145,7 +152,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxRegistro;
         private System.Windows.Forms.Button btnCadastroMaq;
         private System.Windows.Forms.Button btnCadastroLab;
         private System.Windows.Forms.Button btnCadastroTipo;

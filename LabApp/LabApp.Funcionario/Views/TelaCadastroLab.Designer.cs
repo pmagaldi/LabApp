@@ -158,6 +158,7 @@
             this.Controls.Add(this.textBoxQtd);
             this.Controls.Add(this.textAviso);
             this.Controls.Add(this.textBoxNome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaCadastroLab";
             this.Text = "TelaCadastroLab";

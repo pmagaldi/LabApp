@@ -27,6 +27,11 @@ namespace LabAppLibrary.Modelo
             Data = DateTime.Today;
         }
 
+        public Registro()
+        {
+
+        }
+
         //funções para mudar o registro?
     }
 }

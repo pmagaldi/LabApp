@@ -136,6 +136,7 @@
             this.Controls.Add(this.textBoxIp);
             this.Controls.Add(this.textBoxLab);
             this.Controls.Add(this.textBoxNome);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaCadastroMaq";
             this.Text = "TelaCadastroMaq";

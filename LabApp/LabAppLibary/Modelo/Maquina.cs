@@ -41,12 +41,9 @@ namespace LabAppLibrary.Modelo
             Nome = nome;
             Ip = ip;
         }
-        public Maquina(string ip)
-        {
-            if (ip == null)
-                throw new ArgumentException("Erro nos argumentos do construtor da classe Maquina");
-            Ip = ip;
-        }
+        /// <summary>
+        /// Contrutor de uma máquina no laboratório de informática.  Para ser usado pelo entity framework
+        /// </summary>
         public Maquina()
         {
 

@@ -23,5 +23,10 @@ namespace LabAppLibrary.Modelo
             Nome = nome;
             Descricao = texto;
         }
+
+        public TiposDeErro()
+        {
+
+        }
     }
 }

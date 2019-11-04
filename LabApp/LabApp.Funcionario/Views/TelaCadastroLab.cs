@@ -45,12 +45,12 @@ namespace LabApp.Funcionario.Views
         {
             string contexto = "RDSDBContext";
             if (checkBoxNome.Checked)
-            {
+            {                
                 try
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
-                    {                        
-                        var item = laboratorioContext.Laboratorios.Where(c => c.id == );
+                    {
+                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex);
                         if (item != null)
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
@@ -71,7 +71,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = laboratorioContext.Laboratorios.FirstOrDefault(c => c.id == lab.id);
+                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex);
                         if (item != null)
                         {
                             item.MudarQtd(Convert.ToInt32(textBoxQtd.Text.ToString()));
@@ -92,7 +92,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = laboratorioContext.Laboratorios.FirstOrDefault(c => c.id == lab.id);
+                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex);
                         if (item != null)
                         {
                             item.MudarGrupoErro(Convert.ToInt32(textBoxGrupo.Text.ToString()));
