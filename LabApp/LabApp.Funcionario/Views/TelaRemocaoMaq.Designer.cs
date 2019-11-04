@@ -50,6 +50,7 @@
             this.btnListar.TabIndex = 1;
             this.btnListar.Text = "Pegar Lista de Maquinas";
             this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // btnRemover
             // 
@@ -59,6 +60,7 @@
             this.btnRemover.TabIndex = 2;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // TelaRemocaoMaq
             // 

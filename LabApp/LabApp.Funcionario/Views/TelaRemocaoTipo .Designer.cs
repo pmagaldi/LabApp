@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaRemocaoTipo));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTipos = new System.Windows.Forms.ComboBox();
             this.btnListar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxTipos
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(50, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(126, 21);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxTipos.FormattingEnabled = true;
+            this.comboBoxTipos.Location = new System.Drawing.Point(50, 12);
+            this.comboBoxTipos.Name = "comboBoxTipos";
+            this.comboBoxTipos.Size = new System.Drawing.Size(126, 21);
+            this.comboBoxTipos.TabIndex = 0;
             // 
             // btnListar
             // 
@@ -50,6 +50,7 @@
             this.btnListar.TabIndex = 1;
             this.btnListar.Text = "Pegar Lista de Tipos de Erros";
             this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // btnRemover
             // 
@@ -59,6 +60,7 @@
             this.btnRemover.TabIndex = 2;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // TelaRemocaoTipo
             // 
@@ -67,7 +69,7 @@
             this.ClientSize = new System.Drawing.Size(235, 131);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnListar);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxTipos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaRemocaoTipo";
@@ -78,7 +80,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxTipos;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.Button btnRemover;
     }

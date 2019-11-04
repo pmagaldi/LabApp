@@ -19,7 +19,7 @@ namespace LabApp.Funcionario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            pegarLista();
+            //pegarLista();
             Application.Run(new TelaPrincipal());
         }
 
