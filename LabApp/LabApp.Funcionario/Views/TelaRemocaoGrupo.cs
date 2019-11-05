@@ -21,6 +21,7 @@ namespace LabApp.Funcionario.Views
 
         private void btnListar_Click(object sender, EventArgs e)
         {
+            comboBoxGrupos.Items.Clear();
             try
             {
                 using (var grupoContext = new GErrosContext("RDSDBContext"))
@@ -45,7 +46,7 @@ namespace LabApp.Funcionario.Views
             {
                 using (var grupoContext = new GErrosContext("RDSDBContext"))
                 {
-                    var grupo = grupoContext.GruposErro.FirstOrDefault(c => c.Id == comboBoxGrupos.SelectedIndex);
+                    var grupo = grupoContext.GruposErro.FirstOrDefault(c => c.Id == comboBoxGrupos.SelectedIndex+1);
                     grupoContext.GruposErro.Remove(grupo);
                     grupoContext.SaveChanges();
                     MessageBox.Show("Realizado com Sucesso!");

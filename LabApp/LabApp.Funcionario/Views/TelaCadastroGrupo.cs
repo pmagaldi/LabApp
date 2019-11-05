@@ -13,10 +13,31 @@ using LabAppLibrary.Modelo;
 namespace LabApp.Funcionario.Views
 {
     public partial class TelaCadastroGrupo : Form
-    {
+    {  
         public TelaCadastroGrupo()
-        {
+        {                       
             InitializeComponent();
+            pegarIdTipo();
+        }
+
+        private void pegarIdTipo()
+        {
+            try
+            {
+                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                {
+                    var lista = tipoContext.TiposErro.ToList();
+                    foreach (var item in lista)
+                    {
+                        comboBoxTipos.Items.Add("Id: " + item.Id + " Nome: " + item.Nome);          
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao pegar os ripos de erro");
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnCadastro_Click(object sender, EventArgs e)
@@ -26,7 +47,7 @@ namespace LabApp.Funcionario.Views
                 using (var grupoContext = new GErrosContext("RDSDBContext"))
                 {
                     int idGrupo = Convert.ToInt32(textBoxIdGrupo.Text.ToString());
-                    int idTipo = Convert.ToInt32(textBoxIdTipo.Text.ToString());
+                    int idTipo = comboBoxTipos.SelectedIndex + 1;
                     grupoContext.GruposErro.Add(new GruposDeErro(idGrupo, idTipo));
                     grupoContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");

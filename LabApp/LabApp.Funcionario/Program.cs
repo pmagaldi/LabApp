@@ -28,6 +28,7 @@ namespace LabApp.Funcionario
             using (var registroContext = new RegistroContext("RDSDBContext"))
             {
                 IList<string> registros = registroContext.Registros.Select(c => "Maq: " + c.NomeMaq + "Id Erro: " + c.IdTipoErro.ToString()).ToList();
+                Lista = new string[registros.Count];
                 int index = 0;
                 foreach (var item in registros)
                 {

@@ -32,8 +32,8 @@
             this.textId = new System.Windows.Forms.Label();
             this.textBoxIdGrupo = new System.Windows.Forms.TextBox();
             this.textIdTipo = new System.Windows.Forms.Label();
-            this.textBoxIdTipo = new System.Windows.Forms.TextBox();
             this.btnCadastro = new System.Windows.Forms.Button();
+            this.comboBoxTipos = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textId
@@ -47,9 +47,9 @@
             // 
             // textBoxIdGrupo
             // 
-            this.textBoxIdGrupo.Location = new System.Drawing.Point(128, 50);
+            this.textBoxIdGrupo.Location = new System.Drawing.Point(118, 50);
             this.textBoxIdGrupo.Name = "textBoxIdGrupo";
-            this.textBoxIdGrupo.Size = new System.Drawing.Size(100, 20);
+            this.textBoxIdGrupo.Size = new System.Drawing.Size(113, 20);
             this.textBoxIdGrupo.TabIndex = 1;
             // 
             // textIdTipo
@@ -61,13 +61,6 @@
             this.textIdTipo.TabIndex = 2;
             this.textIdTipo.Text = "Id Tipo de Erro:";
             // 
-            // textBoxIdTipo
-            // 
-            this.textBoxIdTipo.Location = new System.Drawing.Point(128, 97);
-            this.textBoxIdTipo.Name = "textBoxIdTipo";
-            this.textBoxIdTipo.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIdTipo.TabIndex = 3;
-            // 
             // btnCadastro
             // 
             this.btnCadastro.Location = new System.Drawing.Point(78, 138);
@@ -78,13 +71,21 @@
             this.btnCadastro.UseVisualStyleBackColor = true;
             this.btnCadastro.Click += new System.EventHandler(this.btnCadastro_Click);
             // 
+            // comboBoxTipos
+            // 
+            this.comboBoxTipos.FormattingEnabled = true;
+            this.comboBoxTipos.Location = new System.Drawing.Point(110, 97);
+            this.comboBoxTipos.Name = "comboBoxTipos";
+            this.comboBoxTipos.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTipos.TabIndex = 5;
+            // 
             // TelaCadastroGrupo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(259, 200);
+            this.Controls.Add(this.comboBoxTipos);
             this.Controls.Add(this.btnCadastro);
-            this.Controls.Add(this.textBoxIdTipo);
             this.Controls.Add(this.textIdTipo);
             this.Controls.Add(this.textBoxIdGrupo);
             this.Controls.Add(this.textId);
@@ -102,7 +103,7 @@
         private System.Windows.Forms.Label textId;
         private System.Windows.Forms.TextBox textBoxIdGrupo;
         private System.Windows.Forms.Label textIdTipo;
-        private System.Windows.Forms.TextBox textBoxIdTipo;
         private System.Windows.Forms.Button btnCadastro;
+        private System.Windows.Forms.ComboBox comboBoxTipos;
     }
 }

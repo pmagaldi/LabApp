@@ -49,7 +49,7 @@ namespace LabApp.Funcionario
 
         private void btnRemoverMaq_Click(object sender, EventArgs e)
         {
-            Views.TelaRemocaoLab telaRemocaoMaq = new Views.TelaRemocaoLab();
+            Views.TelaRemocaoMaq telaRemocaoMaq = new Views.TelaRemocaoMaq();
             telaRemocaoMaq.ShowDialog();
         }
 

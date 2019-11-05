@@ -21,6 +21,7 @@ namespace LabApp.Funcionario.Views
 
         private void btnListar_Click(object sender, EventArgs e)
         {
+            comboBoxTipos.Items.Clear();
             try
             {
                 using (var tipoContext = new TErrosContext("RDSDBContext"))
@@ -45,7 +46,7 @@ namespace LabApp.Funcionario.Views
             {
                 using (var tipoContext = new TErrosContext("RDSDBContext"))
                 {
-                    var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Nome == comboBoxTipos.SelectedText);
+                    var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Id == comboBoxTipos.SelectedIndex+1);
                     tipoContext.TiposErro.Remove(tipo);
                     tipoContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");

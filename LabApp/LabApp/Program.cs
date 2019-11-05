@@ -32,7 +32,6 @@ namespace LabApp
 
         static void listaTipoErro(Maquina maq)
         {
-            //primeiro pegar lab
             using (var Labcont = new LaboratorioContext("RDSDBContext"))
             {
                 var lab = Labcont.Laboratorios.FirstOrDefault(c => c.id == maq.IdLab);

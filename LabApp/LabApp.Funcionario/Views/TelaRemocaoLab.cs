@@ -21,6 +21,7 @@ namespace LabApp.Funcionario.Views
 
         private void btnListar_Click(object sender, EventArgs e)
         {
+            comboBoxLabs.Items.Clear();
             try
             {
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
@@ -45,7 +46,7 @@ namespace LabApp.Funcionario.Views
             {
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
                 {
-                    var lab = labContext.Laboratorios.FirstOrDefault(s => s.Nome == comboBoxLabs.SelectedText);
+                    var lab = labContext.Laboratorios.FirstOrDefault(s => s.id == comboBoxLabs.SelectedIndex+1);
                     labContext.Laboratorios.Remove(lab);
                     labContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");

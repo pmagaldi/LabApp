@@ -21,6 +21,7 @@ namespace LabApp.Funcionario.Views
 
         private void btnListar_Click(object sender, EventArgs e)
         {
+            comboBoxMaqs.Items.Clear();
             try
             {
                 using (var maqContext = new MaquinaContext("RDSDBContext"))
@@ -45,7 +46,7 @@ namespace LabApp.Funcionario.Views
             {
                 using (var maqContext = new MaquinaContext("RDSDBContext"))
                 {
-                    var Maq = maqContext.Maquinas.FirstOrDefault(s => s.Nome == comboBoxMaqs.SelectedText);
+                    var Maq = maqContext.Maquinas.FirstOrDefault(s => s.id == comboBoxMaqs.SelectedIndex+1);
                     maqContext.Maquinas.Remove(Maq);
                     maqContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");

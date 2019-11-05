@@ -50,7 +50,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex);
+                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex+1);
                         if (item != null)
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
@@ -71,7 +71,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex);
+                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex+1);
                         if (item != null)
                         {
                             item.MudarQtd(Convert.ToInt32(textBoxQtd.Text.ToString()));
@@ -92,7 +92,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex);
+                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex+1);
                         if (item != null)
                         {
                             item.MudarGrupoErro(Convert.ToInt32(textBoxGrupo.Text.ToString()));
