@@ -46,10 +46,20 @@ namespace LabApp.Funcionario.Views
             {
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
                 {
-                    var lab = labContext.Laboratorios.FirstOrDefault(s => s.id == comboBoxLabs.SelectedIndex+1);
-                    labContext.Laboratorios.Remove(lab);
-                    labContext.SaveChanges();
-                    MessageBox.Show("Realizado com sucesso!");
+                    var lab = labContext.Laboratorios.FirstOrDefault(s => s.Id == comboBoxLabs.SelectedIndex + 1);
+                    if(lab != null)
+                    {
+                        labContext.Laboratorios.Remove(lab);
+                        labContext.SaveChanges();
+                        MessageBox.Show("Realizado com sucesso!");
+                    }
+                    else
+                    {
+                        lab = labContext.Laboratorios.FirstOrDefault(s => s.Nome == comboBoxLabs.Text);
+                        labContext.Laboratorios.Remove(lab);
+                        labContext.SaveChanges();
+                        MessageBox.Show("Realizado com sucesso!");
+                    }
                 }
             }
             catch(Exception ex)

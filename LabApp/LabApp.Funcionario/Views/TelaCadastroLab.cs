@@ -29,7 +29,8 @@ namespace LabApp.Funcionario.Views
             {
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
                 {
-                    labContext.Laboratorios.Add(new Laboratorio(nome, qtd, id));
+                    var teste = labContext.Laboratorios.Count();
+                    labContext.Laboratorios.Add(new Laboratorio(teste+1,nome, qtd, id));
                     labContext.SaveChanges();
                     MessageBox.Show("Realizado com Sucesso!");
                 }
@@ -50,7 +51,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex+1);
+                        var item = lab.FirstOrDefault(c => c.Id == comboBoxLabs.SelectedIndex+1);
                         if (item != null)
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
@@ -71,7 +72,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex+1);
+                        var item = lab.FirstOrDefault(c => c.Id == comboBoxLabs.SelectedIndex+1);
                         if (item != null)
                         {
                             item.MudarQtd(Convert.ToInt32(textBoxQtd.Text.ToString()));
@@ -92,7 +93,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.id == comboBoxLabs.SelectedIndex+1);
+                        var item = lab.FirstOrDefault(c => c.Id == comboBoxLabs.SelectedIndex+1);
                         if (item != null)
                         {
                             item.MudarGrupoErro(Convert.ToInt32(textBoxGrupo.Text.ToString()));

@@ -46,7 +46,7 @@ namespace LabApp.Funcionario.Views
             {
                 using (var grupoContext = new GErrosContext("RDSDBContext"))
                 {
-                    var grupo = grupoContext.GruposErro.FirstOrDefault(c => c.Id == comboBoxGrupos.SelectedIndex+1);
+                    var grupo = grupoContext.GruposErro.FirstOrDefault(s => s.Id == comboBoxGrupos.SelectedIndex+1);
                     grupoContext.GruposErro.Remove(grupo);
                     grupoContext.SaveChanges();
                     MessageBox.Show("Realizado com Sucesso!");

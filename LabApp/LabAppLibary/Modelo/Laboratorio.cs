@@ -7,10 +7,18 @@ namespace LabAppLibrary.Modelo
         /// <summary>
         /// Classe define um laborarótio no LabApp
         /// </summary>
-        public int id { get;internal set; }
+        public int Id { get;internal set; }
         public string Nome { get;  set; }
         public int _QtdMaq { get;  set; }
         public int IdGrupoErro { get;  set; }
+
+        public Laboratorio(int id, string nome, int qtd, int idGrupo)
+        {
+            Id = id;
+            Nome = nome;
+            _QtdMaq = qtd;
+            IdGrupoErro = idGrupo;
+        }
 
         /// <summary>
         /// Construtor de um laboratório de informática.
@@ -19,13 +27,13 @@ namespace LabAppLibrary.Modelo
         /// <param name="qtMaq"></param>
         /// <param name="Id"></param>
 
-        public Laboratorio(string nome, int qtMaq, int Id)
+        public Laboratorio(string nome, int qtMaq, int idGrupo)
         {
-            if (nome == null || qtMaq <= 0 || Id <= 0)
+            if (nome == null || qtMaq <= 0 || idGrupo <= 0)
                 throw new ArgumentException("Erro nos argumentos do construtor da classe Laboratório");
             Nome = nome;
             _QtdMaq = qtMaq;
-            IdGrupoErro = Id;
+            IdGrupoErro = idGrupo;
         }
         /// <summary>
         /// Construtor de um laboratório de informática. Para ser usado pelo entity framework
