@@ -25,24 +25,45 @@ namespace LabApp.Funcionario
 
         private static void pegarLista()
         {
-            using (var registroContext = new RegistroContext("RDSDBContext"))
+            try
             {
-                IList<string> registros = registroContext.Registros.Select(c => "Maq: " + c.NomeMaq + "Id Erro: " + c.IdTipoErro.ToString()).ToList();
-                Lista = new string[registros.Count];
-                int index = 0;
-                foreach (var item in registros)
+                using (var registroContext = new RegistroContext("RDSDBContext"))
                 {
-                    Lista[index] = item;
-                    index++;
+                    IList<string> registros = registroContext.Registros.Select(c => "Maq: " + c.NomeMaq + "Id Erro: " + c.IdTipoErro.ToString()).ToList();
+                    Lista = new string[registros.Count];
+                    int index = 0;
+                    foreach (var item in registros)
+                    {
+                        Lista[index] = item;
+                        index++;
+                    }
+                }
+            }
+            finally
+            {
+                if(Lista == null)
+                {
+
                 }
             }
         }
 
         internal static void deletarRegistro(int index)
         {
-            using (var registroContext = new RegistroContext("RDSDBContext"))
+            try
             {
-                Registro reg = registroContext.Registros.FirstOrDefault(s => s.Id == index);
+                using (var registroContext = new RegistroContext("RDSDBContext"))
+                {
+                    Registro reg = registroContext.Registros.FirstOrDefault(s => s.Id == index);
+                    registroContext.Registros.Remove(reg);
+                    registroContext.SaveChanges();
+                    MessageBox.Show("Realizado com sucesso!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
             }
         }
     }

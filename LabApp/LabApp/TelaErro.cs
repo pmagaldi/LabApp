@@ -20,10 +20,10 @@ namespace LabApp
         public TelaErro(Exception ex)
         {            
             InitializeComponent();
-            textErro.Text = ex.Message;
+            textErro.Text = " Computador não cadastrado no banco de dados";
             ErroTextBox.Multiline = true;
             ErroTextBox.ScrollBars = ScrollBars.Vertical;
-            ErroTextBox.Text += ex.StackTrace;
+            ErroTextBox.Text += ex.Message + "\n\n" + ex.StackTrace;
         }
     }
 }
