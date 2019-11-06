@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,9 @@ namespace LabApp.Funcionario.Views
                 using (var maqContext = new MaquinaContext("RDSDBContext"))
                 {
                     var Maq = maqContext.Maquinas.FirstOrDefault(s => s.id == comboBoxMaqs.SelectedIndex+1);
+                    var id = Maq.id - 1;
                     maqContext.Maquinas.Remove(Maq);
+                    maqContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)", new SqlParameter("@id", id));
                     maqContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                 }

@@ -40,7 +40,8 @@ namespace LabApp
 
         private void ButtonEnviar_Click(object sender, EventArgs e)
         {
-            var index = comboBoxProb.SelectedIndex;
+            var index = comboBoxProb.SelectedIndex + 1;
+            Program.Registro(index);
         }
     }
 }

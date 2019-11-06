@@ -9,8 +9,8 @@ namespace LabAppLibrary.Modelo
         /// <summary>
         /// Define o registro de erro em uma laboratório de informática
         /// </summary>
-        protected int Id { get; set; }
-        protected string NomeLab { get; set; }
+        public int Id { get; internal set; }
+        public string NomeLab { get; internal set; }
         public string NomeMaq { get; set; }
         public DateTime Data { get; protected set; }
         protected string Ip { get;  set; }

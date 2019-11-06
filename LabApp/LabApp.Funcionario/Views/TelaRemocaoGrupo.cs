@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,9 @@ namespace LabApp.Funcionario.Views
                 using (var grupoContext = new GErrosContext("RDSDBContext"))
                 {
                     var grupo = grupoContext.GruposErro.FirstOrDefault(s => s.Id == comboBoxGrupos.SelectedIndex+1);
+                    var id = grupo.Id - 1;
                     grupoContext.GruposErro.Remove(grupo);
+                    grupoContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)", new SqlParameter("@id", id));
                     grupoContext.SaveChanges();
                     MessageBox.Show("Realizado com Sucesso!");
                 }

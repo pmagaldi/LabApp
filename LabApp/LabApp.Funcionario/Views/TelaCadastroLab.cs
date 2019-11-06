@@ -55,6 +55,7 @@ namespace LabApp.Funcionario.Views
                         if (item != null)
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
+                            laboratorioContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
                             laboratorioContext.SaveChanges();
                             MessageBox.Show("Realizado com sucesso!");
                         }
@@ -76,6 +77,7 @@ namespace LabApp.Funcionario.Views
                         if (item != null)
                         {
                             item.MudarQtd(Convert.ToInt32(textBoxQtd.Text.ToString()));
+                            laboratorioContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
                             laboratorioContext.SaveChanges();
                             MessageBox.Show("Realizado com sucesso!");
                         }
@@ -97,6 +99,7 @@ namespace LabApp.Funcionario.Views
                         if (item != null)
                         {
                             item.MudarGrupoErro(Convert.ToInt32(textBoxGrupo.Text.ToString()));
+                            laboratorioContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
                             laboratorioContext.SaveChanges();
                             MessageBox.Show("Realizado com sucesso!");
                         }

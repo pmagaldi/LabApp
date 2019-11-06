@@ -12,9 +12,11 @@ namespace LabApp
 {
     static class Program
     {
-        public static string Ip { get; set; }
-        public static string Computername { get; set; }
-        public static string[] Lista { get; set; }
+        public static string Ip { get;internal set; }
+        public static string Computername { get;internal set; }
+        public static string Labname { get;internal set; }
+        public static int idGrupo { get; internal set; }
+        public static string[] Lista { get;internal set; }
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -25,36 +27,53 @@ namespace LabApp
             Application.SetCompatibleTextRenderingDefault(false);
             Computername = pegarNomePC();
             Ip = pegarIp();
-            Maquina maq = new Maquina(Computername, Ip, pegarIdLab(Computername, Ip));
-            listaTipoErro(maq);
-            Application.Run(new TelaPrincipal(maq,Lista));
+            try
+            {
+                Maquina maq = new Maquina(Computername, Ip, pegarIdLab(Computername, Ip));
+                listaTipoErro(maq);
+                Application.Run(new TelaPrincipal(maq, Lista));
+            }
+            catch(Exception ex)
+            {
+                Application.Run(new TelaErro(ex));
+            }
         }
 
         static void listaTipoErro(Maquina maq)
         {
-            using (var Labcont = new LaboratorioContext("RDSDBContext"))
+            try
             {
-                var lab = Labcont.Laboratorios.FirstOrDefault(c => c.id == maq.IdLab);
-                using (var GrupoCont = new GErrosContext("RDSDBContext"))
+                using (var Labcont = new LaboratorioContext("RDSDBContext"))
                 {
-                    IList<GruposDeErro> TodoErros = GrupoCont.GruposErro.Where(c => c.IdGrupo == lab.IdGrupoErro).ToList();
-                    List<int> idDeTodoErros = TodoErros.Select(s => s.IdTipoErro).ToList();
-                    using (var tErros = new TErrosContext("RDSDBContext"))
+                    var lab = Labcont.Laboratorios.FirstOrDefault(c => c.Id == maq.IdLab);
+                    Labname = lab.Nome;
+                    idGrupo = lab.IdGrupoErro;
+                    using (var GrupoCont = new GErrosContext("RDSDBContext"))
                     {
-                        IList<TiposDeErro> tiposDeErros = tErros.TiposErro.ToList();
-                        Lista = new string[tiposDeErros.Count];
-                        int index = 0;
-                        foreach (var item in idDeTodoErros)
+                        IList<GruposDeErro> TodoErros = GrupoCont.GruposErro.Where(c => c.IdGrupo == lab.IdGrupoErro).ToList();
+                        List<int> idDeTodoErros = TodoErros.Select(s => s.IdTipoErro).ToList();
+                        using (var tErros = new TErrosContext("RDSDBContext"))
                         {
-                            if (tiposDeErros.Select(c => c.Id).Equals(item))
+                            IList<TiposDeErro> tiposDeErros = tErros.TiposErro.ToList();
+                            Lista = new string[tiposDeErros.Count];
+                            int index = 0;
+                            foreach (var item in idDeTodoErros)
                             {
-                                Lista[index] = tiposDeErros.Select(c => c.Nome).ToString();
-                                index++;
-                            }                                
+                                if (tiposDeErros.Select(c => c.Id).Equals(item))
+                                {
+                                    Lista[index] = tiposDeErros.Select(c => c.Nome).ToString();
+                                    index++;
+                                }
+                            }
                         }
                     }
                 }
-            }            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
+            }
         }
 
         static int pegarIdLab(string nome, string ip)
@@ -86,6 +105,24 @@ namespace LabApp
         static string pegarNomePC()
         {
             return Environment.MachineName.ToString();
+        }
+
+        public static void Registro(int index)
+        {
+            try
+            {
+                using (var regContext = new RegistroContext("RDSDBContext"))
+                {
+                    regContext.Registros.Add(new Registro(Labname, Computername, Ip, index, idGrupo));
+                    regContext.SaveChanges();
+                    MessageBox.Show("Realizado com sucesso!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.StackTrace);
+            }
         }
     }
 }

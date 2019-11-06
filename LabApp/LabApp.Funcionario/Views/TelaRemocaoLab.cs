@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,19 +48,11 @@ namespace LabApp.Funcionario.Views
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
                 {
                     var lab = labContext.Laboratorios.FirstOrDefault(s => s.Id == comboBoxLabs.SelectedIndex + 1);
-                    if(lab != null)
-                    {
-                        labContext.Laboratorios.Remove(lab);
-                        labContext.SaveChanges();
-                        MessageBox.Show("Realizado com sucesso!");
-                    }
-                    else
-                    {
-                        lab = labContext.Laboratorios.FirstOrDefault(s => s.Nome == comboBoxLabs.Text);
-                        labContext.Laboratorios.Remove(lab);
-                        labContext.SaveChanges();
-                        MessageBox.Show("Realizado com sucesso!");
-                    }
+                    var id = lab.Id - 1;
+                    labContext.Laboratorios.Remove(lab);
+                    labContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)",new SqlParameter("@id",id));
+                    labContext.SaveChanges();
+                    MessageBox.Show("Realizado com sucesso!");
                 }
             }
             catch(Exception ex)

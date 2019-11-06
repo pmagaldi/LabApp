@@ -19,8 +19,8 @@ namespace LabApp.Funcionario
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //pegarLista();
-            Application.Run(new TelaPrincipal());
+            pegarLista();
+            Application.Run(new TelaPrincipal(Lista));
         }
 
         private static void pegarLista()
@@ -35,6 +35,14 @@ namespace LabApp.Funcionario
                     Lista[index] = item;
                     index++;
                 }
+            }
+        }
+
+        internal static void deletarRegistro(int index)
+        {
+            using (var registroContext = new RegistroContext("RDSDBContext"))
+            {
+                Registro reg = registroContext.Registros.FirstOrDefault(s => s.Id == index);
             }
         }
     }

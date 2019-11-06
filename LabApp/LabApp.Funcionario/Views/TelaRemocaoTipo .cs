@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,9 @@ namespace LabApp.Funcionario.Views
                 using (var tipoContext = new TErrosContext("RDSDBContext"))
                 {
                     var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Id == comboBoxTipos.SelectedIndex+1);
+                    var id = tipo.Id - 1;
                     tipoContext.TiposErro.Remove(tipo);
+                    tipoContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)", new SqlParameter("@id", id));
                     tipoContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                 }

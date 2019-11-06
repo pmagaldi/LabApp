@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
-            this.listBoxRegistro = new System.Windows.Forms.ListBox();
             this.btnCadastroMaq = new System.Windows.Forms.Button();
             this.btnCadastroLab = new System.Windows.Forms.Button();
             this.btnCadastroTipo = new System.Windows.Forms.Button();
@@ -38,15 +37,9 @@
             this.btnRemoverLab = new System.Windows.Forms.Button();
             this.btnRemoverTipo = new System.Windows.Forms.Button();
             this.btnRemoverGrupo = new System.Windows.Forms.Button();
+            this.checkedListBoxRegistro = new System.Windows.Forms.CheckedListBox();
+            this.btnRegistroFinalizado = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // listBoxRegistro
-            // 
-            this.listBoxRegistro.FormattingEnabled = true;
-            this.listBoxRegistro.Location = new System.Drawing.Point(137, 12);
-            this.listBoxRegistro.Name = "listBoxRegistro";
-            this.listBoxRegistro.Size = new System.Drawing.Size(120, 95);
-            this.listBoxRegistro.TabIndex = 0;
             // 
             // btnCadastroMaq
             // 
@@ -128,11 +121,32 @@
             this.btnRemoverGrupo.UseVisualStyleBackColor = true;
             this.btnRemoverGrupo.Click += new System.EventHandler(this.btnRemoverGrupo_Click);
             // 
+            // checkedListBoxRegistro
+            // 
+            this.checkedListBoxRegistro.FormattingEnabled = true;
+            this.checkedListBoxRegistro.Location = new System.Drawing.Point(37, 12);
+            this.checkedListBoxRegistro.Name = "checkedListBoxRegistro";
+            this.checkedListBoxRegistro.ScrollAlwaysVisible = true;
+            this.checkedListBoxRegistro.Size = new System.Drawing.Size(167, 94);
+            this.checkedListBoxRegistro.TabIndex = 9;
+            // 
+            // btnRegistroFinalizado
+            // 
+            this.btnRegistroFinalizado.Location = new System.Drawing.Point(232, 44);
+            this.btnRegistroFinalizado.Name = "btnRegistroFinalizado";
+            this.btnRegistroFinalizado.Size = new System.Drawing.Size(128, 26);
+            this.btnRegistroFinalizado.TabIndex = 10;
+            this.btnRegistroFinalizado.Text = "Registro Finalizado";
+            this.btnRegistroFinalizado.UseVisualStyleBackColor = true;
+            this.btnRegistroFinalizado.Click += new System.EventHandler(this.btnRegistroFinalizado_Click);
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 249);
+            this.Controls.Add(this.btnRegistroFinalizado);
+            this.Controls.Add(this.checkedListBoxRegistro);
             this.Controls.Add(this.btnRemoverGrupo);
             this.Controls.Add(this.btnRemoverTipo);
             this.Controls.Add(this.btnRemoverLab);
@@ -141,7 +155,6 @@
             this.Controls.Add(this.btnCadastroTipo);
             this.Controls.Add(this.btnCadastroLab);
             this.Controls.Add(this.btnCadastroMaq);
-            this.Controls.Add(this.listBoxRegistro);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaPrincipal";
@@ -151,8 +164,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBoxRegistro;
         private System.Windows.Forms.Button btnCadastroMaq;
         private System.Windows.Forms.Button btnCadastroLab;
         private System.Windows.Forms.Button btnCadastroTipo;
@@ -161,6 +172,8 @@
         private System.Windows.Forms.Button btnRemoverLab;
         private System.Windows.Forms.Button btnRemoverTipo;
         private System.Windows.Forms.Button btnRemoverGrupo;
+        private System.Windows.Forms.CheckedListBox checkedListBoxRegistro;
+        private System.Windows.Forms.Button btnRegistroFinalizado;
     }
 }
 

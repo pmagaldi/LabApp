@@ -53,6 +53,7 @@ namespace LabApp.Funcionario.Views
                         if(item != null)
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
+                            maqContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
                             maqContext.SaveChanges();
                             MessageBox.Show("Realizado com sucesso!");
                         }
@@ -74,6 +75,7 @@ namespace LabApp.Funcionario.Views
                         if (item != null)
                         {                            
                             item.MudarIdLab(Convert.ToInt32(textBoxLab.Text.ToString()));
+                            maqContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
                             maqContext.SaveChanges();
                             MessageBox.Show("Realizado com sucesso!");
                         }
@@ -95,6 +97,7 @@ namespace LabApp.Funcionario.Views
                         if (item != null)
                         {
                             item.MudarIp(textBoxIp.Text.ToString());
+                            maqContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
                             maqContext.SaveChanges();
                             MessageBox.Show("Realizado com sucesso!");
                         }

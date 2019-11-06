@@ -19,8 +19,8 @@ namespace LabApp.Funcionario
 
         public TelaPrincipal(string[] lista)
         {
-            listBoxRegistro.Items.AddRange(lista);
             InitializeComponent();
+            checkedListBoxRegistro.Items.AddRange(lista);
         }
 
         private void btnCadastroMaq_Click(object sender, EventArgs e)
@@ -69,6 +69,11 @@ namespace LabApp.Funcionario
         {
             Views.TelaRemocaoGrupo telaRemocaoGrupo = new Views.TelaRemocaoGrupo();
             telaRemocaoGrupo.ShowDialog();
+        }
+
+        private void btnRegistroFinalizado_Click(object sender, EventArgs e)
+        {
+            Program.deletarRegistro(checkedListBoxRegistro.SelectedIndex + 1);
         }
     }
 }
