@@ -33,6 +33,7 @@
             this.comboBoxProb = new System.Windows.Forms.ComboBox();
             this.TextProblema = new System.Windows.Forms.Label();
             this.buttonEnviar = new System.Windows.Forms.Button();
+            this.textErro = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // TextPrincipal
@@ -84,11 +85,21 @@
             this.buttonEnviar.UseVisualStyleBackColor = true;
             this.buttonEnviar.Click += new System.EventHandler(this.ButtonEnviar_Click);
             // 
+            // textErro
+            // 
+            this.textErro.AutoSize = true;
+            this.textErro.Location = new System.Drawing.Point(190, 69);
+            this.textErro.Name = "textErro";
+            this.textErro.Size = new System.Drawing.Size(35, 13);
+            this.textErro.TabIndex = 8;
+            this.textErro.Text = "label1";
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(497, 135);
+            this.Controls.Add(this.textErro);
             this.Controls.Add(this.buttonEnviar);
             this.Controls.Add(this.TextProblema);
             this.Controls.Add(this.comboBoxProb);
@@ -109,6 +120,7 @@
         private System.Windows.Forms.ComboBox comboBoxProb;
         private System.Windows.Forms.Label TextProblema;
         private System.Windows.Forms.Button buttonEnviar;
+        private System.Windows.Forms.Label textErro;
     }
 }
 

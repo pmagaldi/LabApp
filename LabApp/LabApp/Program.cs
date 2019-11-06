@@ -35,7 +35,7 @@ namespace LabApp
             }
             catch(Exception ex)
             {
-                Application.Run(new TelaErro(ex));
+                Application.Run(new TelaPrincipal("Computador não cadastrado"));
             }
         }
 

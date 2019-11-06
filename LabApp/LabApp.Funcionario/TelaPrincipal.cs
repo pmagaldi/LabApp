@@ -20,7 +20,15 @@ namespace LabApp.Funcionario
         public TelaPrincipal(string[] lista)
         {
             InitializeComponent();
-            checkedListBoxRegistro.Items.AddRange(lista);
+            if(lista.Contains("Não tem registro"))
+            {
+                checkedListBoxRegistro.Items.AddRange(lista);
+                btnRegistroFinalizado.Enabled = false;
+            }
+            else
+            {
+                checkedListBoxRegistro.Items.AddRange(lista);
+            }
         }
 
         private void btnCadastroMaq_Click(object sender, EventArgs e)

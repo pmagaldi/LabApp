@@ -20,9 +20,19 @@ namespace LabApp
             InitializeComponent();
         }
 
+        public TelaPrincipal(string erro)
+        {
+            InitializeComponent();
+            TextProblema.Visible = false;
+            comboBoxProb.Visible = false;
+            buttonEnviar.Enabled = false;
+            textErro.Text = erro;
+        }
+
         public TelaPrincipal(Maquina maquina)
         {
             InitializeComponent();
+            textErro.Visible = false;
             maq = maquina;
         }
 

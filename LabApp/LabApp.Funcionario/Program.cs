@@ -41,9 +41,10 @@ namespace LabApp.Funcionario
             }
             finally
             {
-                if(Lista == null)
+                if (Lista.Length == 0)
                 {
-
+                    Lista = new string[1];
+                    Lista[0] = "Não tem registro";                    
                 }
             }
         }

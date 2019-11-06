@@ -57,12 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TelaErro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TelaErro.Designer.cs">
-      <DependentUpon>TelaErro.cs</DependentUpon>
-    </Compile>
     <Compile Include="TelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,9 +65,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="TelaErro.resx">
-      <DependentUpon>TelaErro.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TelaPrincipal.resx">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
