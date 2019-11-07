@@ -40,6 +40,7 @@ namespace LabApp
         {
             InitializeComponent();
             maq = maquina;
+            textErro.Visible = false;
             comboBoxProb.Items.AddRange(lista);
         }
 

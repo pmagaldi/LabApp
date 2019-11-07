@@ -90,9 +90,9 @@
             this.textErro.AutoSize = true;
             this.textErro.Location = new System.Drawing.Point(190, 69);
             this.textErro.Name = "textErro";
-            this.textErro.Size = new System.Drawing.Size(35, 13);
+            this.textErro.Size = new System.Drawing.Size(25, 13);
             this.textErro.TabIndex = 8;
-            this.textErro.Text = "label1";
+            this.textErro.Text = "erro";
             // 
             // TelaPrincipal
             // 

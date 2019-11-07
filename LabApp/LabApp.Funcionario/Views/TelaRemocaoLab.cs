@@ -53,6 +53,7 @@ namespace LabApp.Funcionario.Views
                     labContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)",new SqlParameter("@id",id));
                     labContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
+                    comboBoxLabs.Items.RemoveAt(comboBoxLabs.SelectedIndex);
                 }
             }
             catch(Exception ex)

@@ -59,9 +59,10 @@ namespace LabApp
                             int index = 0;
                             foreach (var item in idDeTodoErros)
                             {
-                                if (tiposDeErros.Select(c => c.Id).Equals(item))
+                                if (tiposDeErros.Select(s => s.Id).Contains(item))
                                 {
-                                    Lista[index] = tiposDeErros.Select(c => c.Nome).ToString();
+                                    var nome = tiposDeErros.FirstOrDefault(s => s.Id == item).Nome;
+                                    Lista[index] = nome;
                                     index++;
                                 }
                             }

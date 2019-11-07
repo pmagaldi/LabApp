@@ -127,14 +127,14 @@
             this.checkedListBoxRegistro.Location = new System.Drawing.Point(37, 12);
             this.checkedListBoxRegistro.Name = "checkedListBoxRegistro";
             this.checkedListBoxRegistro.ScrollAlwaysVisible = true;
-            this.checkedListBoxRegistro.Size = new System.Drawing.Size(167, 94);
+            this.checkedListBoxRegistro.Size = new System.Drawing.Size(224, 94);
             this.checkedListBoxRegistro.TabIndex = 9;
             // 
             // btnRegistroFinalizado
             // 
-            this.btnRegistroFinalizado.Location = new System.Drawing.Point(232, 44);
+            this.btnRegistroFinalizado.Location = new System.Drawing.Point(267, 43);
             this.btnRegistroFinalizado.Name = "btnRegistroFinalizado";
-            this.btnRegistroFinalizado.Size = new System.Drawing.Size(128, 26);
+            this.btnRegistroFinalizado.Size = new System.Drawing.Size(109, 26);
             this.btnRegistroFinalizado.TabIndex = 10;
             this.btnRegistroFinalizado.Text = "Registro Finalizado";
             this.btnRegistroFinalizado.UseVisualStyleBackColor = true;
