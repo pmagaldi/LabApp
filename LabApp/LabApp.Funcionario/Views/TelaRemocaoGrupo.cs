@@ -50,7 +50,7 @@ namespace LabApp.Funcionario.Views
                     var grupo = grupoContext.GruposErro.FirstOrDefault(s => s.Id == comboBoxGrupos.SelectedIndex+1);
                     var id = grupo.Id - 1;
                     grupoContext.GruposErro.Remove(grupo);
-                    grupoContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)", new SqlParameter("@id", id));
+                    grupoContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('GrupoDeErroes',RESEED, @id)", new SqlParameter("@id", id));
                     grupoContext.SaveChanges();
                     MessageBox.Show("Realizado com Sucesso!");
                     comboBoxGrupos.Items.RemoveAt(comboBoxGrupos.SelectedIndex);

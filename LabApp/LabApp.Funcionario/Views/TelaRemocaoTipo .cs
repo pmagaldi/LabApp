@@ -50,7 +50,7 @@ namespace LabApp.Funcionario.Views
                     var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Id == comboBoxTipos.SelectedIndex+1);
                     var id = tipo.Id - 1;
                     tipoContext.TiposErro.Remove(tipo);
-                    tipoContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)", new SqlParameter("@id", id));
+                    tipoContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('TiposDeErroes',RESEED, @id)", new SqlParameter("@id", id));
                     tipoContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                     comboBoxTipos.Items.RemoveAt(comboBoxTipos.SelectedIndex);

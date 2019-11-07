@@ -50,7 +50,7 @@ namespace LabApp.Funcionario.Views
                     var Maq = maqContext.Maquinas.FirstOrDefault(s => s.id == comboBoxMaqs.SelectedIndex+1);
                     var id = Maq.id - 1;
                     maqContext.Maquinas.Remove(Maq);
-                    maqContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)", new SqlParameter("@id", id));
+                    maqContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Maquinas',RESEED, @id)", new SqlParameter("@id", id));
                     maqContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                     comboBoxMaqs.Items.RemoveAt(comboBoxMaqs.SelectedIndex);
