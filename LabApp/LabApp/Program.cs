@@ -90,7 +90,7 @@ namespace LabApp
         {
             var host = Dns.GetHostName();
             IPAddress[] ip = Dns.GetHostAddresses(host);
-            string padrao = "[1-2]{1}[0-9]{1,2}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}";
+            string padrao = "[10]{1}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}";
             foreach (var i in ip)
             {
                 var match = Regex.IsMatch(i.ToString(), padrao);
