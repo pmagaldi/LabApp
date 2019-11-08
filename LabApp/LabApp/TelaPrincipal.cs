@@ -51,7 +51,7 @@ namespace LabApp
 
         private void ButtonEnviar_Click(object sender, EventArgs e)
         {
-            var texto = comboBoxProb.SelectedText;
+            var texto = comboBoxProb.Text;
             Program.Registro(texto);
         }
     }

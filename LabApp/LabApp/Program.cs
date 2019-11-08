@@ -36,6 +36,7 @@ namespace LabApp
             catch(Exception ex)
             {
                 Application.Run(new TelaPrincipal("Computador não cadastrado"));
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -55,7 +56,7 @@ namespace LabApp
                         using (var tErros = new TErrosContext("RDSDBContext"))
                         {
                             IList<TiposDeErro> tiposDeErros = tErros.TiposErro.ToList();
-                            Lista = new string[tiposDeErros.Count];
+                            Lista = new string[idDeTodoErros.Count];
                             int index = 0;
                             foreach (var item in idDeTodoErros)
                             {
@@ -115,7 +116,7 @@ namespace LabApp
                 int index;
                 using (var tipoContext = new TErrosContext("RDSDBContext"))
                 {
-                    index = tipoContext.TiposErro.FirstOrDefault(s => s.Nome == texto).Id;
+                    index = tipoContext.TiposErro.Where(s => s.Nome == texto).FirstOrDefault().Id;
                 }
                 using (var regContext = new RegistroContext("RDSDBContext"))
                 {
