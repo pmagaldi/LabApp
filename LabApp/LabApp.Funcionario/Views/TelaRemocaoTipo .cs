@@ -47,10 +47,8 @@ namespace LabApp.Funcionario.Views
             {
                 using (var tipoContext = new TErrosContext("RDSDBContext"))
                 {
-                    var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Id == comboBoxTipos.SelectedIndex+1);
-                    var id = tipo.Id - 1;
+                    var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Nome == comboBoxTipos.SelectedText);
                     tipoContext.TiposErro.Remove(tipo);
-                    tipoContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('TiposDeErroes',RESEED, @id)", new SqlParameter("@id", id));
                     tipoContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                     comboBoxTipos.Items.RemoveAt(comboBoxTipos.SelectedIndex);

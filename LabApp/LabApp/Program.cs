@@ -108,10 +108,15 @@ namespace LabApp
             return Environment.MachineName.ToString();
         }
 
-        public static void Registro(int index)
+        public static void Registro(string texto)
         {
             try
             {
+                int index;
+                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                {
+                    index = tipoContext.TiposErro.FirstOrDefault(s => s.Nome == texto).Id;
+                }
                 using (var regContext = new RegistroContext("RDSDBContext"))
                 {
                     regContext.Registros.Add(new Registro(Labname, Computername, Ip, index, idGrupo));

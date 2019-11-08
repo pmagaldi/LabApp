@@ -47,10 +47,8 @@ namespace LabApp.Funcionario.Views
             {
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
                 {
-                    var lab = labContext.Laboratorios.FirstOrDefault(s => s.Id == comboBoxLabs.SelectedIndex + 1);
-                    var id = lab.Id - 1;
+                    var lab = labContext.Laboratorios.Where(s => s.Nome == comboBoxLabs.SelectedText).FirstOrDefault();
                     labContext.Laboratorios.Remove(lab);
-                    labContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Laboratorios',RESEED, @id)",new SqlParameter("@id",id));
                     labContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                     comboBoxLabs.Items.RemoveAt(comboBoxLabs.SelectedIndex);

@@ -51,8 +51,8 @@ namespace LabApp
 
         private void ButtonEnviar_Click(object sender, EventArgs e)
         {
-            var index = comboBoxProb.SelectedIndex + 1;
-            Program.Registro(index);
+            var texto = comboBoxProb.SelectedText;
+            Program.Registro(texto);
         }
     }
 }

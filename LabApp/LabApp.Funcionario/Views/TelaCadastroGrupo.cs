@@ -44,10 +44,14 @@ namespace LabApp.Funcionario.Views
         {
             try
             {
+                int idTipo;
+                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                {
+                    idTipo = tipoContext.TiposErro.Where(s => s.Nome == comboBoxTipos.SelectedText).FirstOrDefault().Id ;
+                }
                 using (var grupoContext = new GErrosContext("RDSDBContext"))
                 {
                     int idGrupo = Convert.ToInt32(textBoxIdGrupo.Text.ToString());
-                    int idTipo = comboBoxTipos.SelectedIndex + 1;
                     grupoContext.GruposErro.Add(new GruposDeErro(idGrupo, idTipo));
                     grupoContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");

@@ -47,10 +47,8 @@ namespace LabApp.Funcionario.Views
             {
                 using (var maqContext = new MaquinaContext("RDSDBContext"))
                 {
-                    var Maq = maqContext.Maquinas.FirstOrDefault(s => s.id == comboBoxMaqs.SelectedIndex+1);
-                    var id = Maq.id - 1;
+                    var Maq = maqContext.Maquinas.FirstOrDefault(s => s.Nome == comboBoxMaqs.SelectedText);
                     maqContext.Maquinas.Remove(Maq);
-                    maqContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Maquinas',RESEED, @id)", new SqlParameter("@id", id));
                     maqContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                     comboBoxMaqs.Items.RemoveAt(comboBoxMaqs.SelectedIndex);

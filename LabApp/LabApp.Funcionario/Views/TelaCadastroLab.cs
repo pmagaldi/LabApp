@@ -29,8 +29,7 @@ namespace LabApp.Funcionario.Views
             {
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
                 {
-                    var teste = labContext.Laboratorios.Count();
-                    labContext.Laboratorios.Add(new Laboratorio(teste+1,nome, qtd, id));
+                    labContext.Laboratorios.Add(new Laboratorio(nome, qtd, id));
                     labContext.SaveChanges();
                     MessageBox.Show("Realizado com Sucesso!");
                 }
@@ -51,7 +50,8 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.Id == comboBoxLabs.SelectedIndex+1);
+                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
+                        var item = lab.FirstOrDefault(c => c.Id == id);
                         if (item != null)
                         {
                             item.MudarNome(textBoxNome.Text.ToString());
@@ -73,7 +73,8 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.Id == comboBoxLabs.SelectedIndex+1);
+                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
+                        var item = lab.FirstOrDefault(c => c.Id == id);
                         if (item != null)
                         {
                             item.MudarQtd(Convert.ToInt32(textBoxQtd.Text.ToString()));
@@ -95,7 +96,8 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(contexto))
                     {
-                        var item = lab.FirstOrDefault(c => c.Id == comboBoxLabs.SelectedIndex+1);
+                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
+                        var item = lab.FirstOrDefault(c => c.Id == id);
                         if (item != null)
                         {
                             item.MudarGrupoErro(Convert.ToInt32(textBoxGrupo.Text.ToString()));
@@ -120,15 +122,15 @@ namespace LabApp.Funcionario.Views
                 using (var labContext = new LaboratorioContext("RDSDBContext"))
                 {
                     lab = labContext.Laboratorios.ToList();
-                    List<string> nomes = labContext.Laboratorios.Select(c => c.Nome).ToList();
-                    string[] Lista = new string[nomes.Count];
-                    int index = 0;
-                    foreach (var item in nomes)
-                    {
-                        Lista[index] = item;
-                        index++;
-                    }
-                    comboBoxLabs.Items.AddRange(Lista);
+                    //List<string> nomes = labContext.Laboratorios.Select(c => c.Nome).ToList();
+                    //string[] Lista = new string[nomes.Count];
+                    //int index = 0;
+                    //foreach (var item in nomes)
+                    //{
+                    //    Lista[index] = item;
+                    //    index++;
+                    //}
+                    comboBoxLabs.Items.AddRange(labContext.Laboratorios.Select(c => c.Nome).ToArray());
                 }
             }
             catch (Exception ex)

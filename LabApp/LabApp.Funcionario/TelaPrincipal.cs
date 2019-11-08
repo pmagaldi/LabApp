@@ -81,8 +81,11 @@ namespace LabApp.Funcionario
 
         private void btnRegistroFinalizado_Click(object sender, EventArgs e)
         {
-            Program.deletarRegistro(checkedListBoxRegistro.SelectedIndex + 1);
-            checkedListBoxRegistro.Items.RemoveAt(checkedListBoxRegistro.SelectedIndex);
+            foreach (var item in checkedListBoxRegistro.SelectedItems)
+            {
+                Program.deletarRegistro(item.ToString());
+                checkedListBoxRegistro.Items.Remove(item);
+            }
         }
     }
 }

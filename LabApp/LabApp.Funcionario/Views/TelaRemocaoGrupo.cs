@@ -30,7 +30,7 @@ namespace LabApp.Funcionario.Views
                     IList<GruposDeErro> Grupos = grupoContext.GruposErro.ToList();
                     foreach (var item in Grupos)
                     {
-                        comboBoxGrupos.Items.Add("IdGrupo: "+item.IdGrupo+" Id:Tipo: "+item.IdTipoErro);
+                        comboBoxGrupos.Items.Add("IdGrupo: "+item.IdGrupo+" IdTipo: "+item.IdTipoErro);
                     }
                 }
             }
@@ -47,10 +47,11 @@ namespace LabApp.Funcionario.Views
             {
                 using (var grupoContext = new GErrosContext("RDSDBContext"))
                 {
-                    var grupo = grupoContext.GruposErro.FirstOrDefault(s => s.Id == comboBoxGrupos.SelectedIndex+1);
-                    var id = grupo.Id - 1;
+                    var texto = comboBoxGrupos.SelectedText;
+                    var idGrupo = Convert.ToInt32(texto.Substring(9, 1));
+                    var idTipo = Convert.ToInt32(texto.Substring(19,1));
+                    var grupo = grupoContext.GruposErro.Where(s => s.IdGrupo == idGrupo && s.IdTipoErro == idTipo).FirstOrDefault();
                     grupoContext.GruposErro.Remove(grupo);
-                    grupoContext.Database.ExecuteSqlCommand("DBCC CHECKIDENT('GrupoDeErroes',RESEED, @id)", new SqlParameter("@id", id));
                     grupoContext.SaveChanges();
                     MessageBox.Show("Realizado com Sucesso!");
                     comboBoxGrupos.Items.RemoveAt(comboBoxGrupos.SelectedIndex);
