@@ -25,9 +25,13 @@ namespace LabApp.Funcionario.Views
         {
             string nome = textBoxNome.Text.ToString();
             string ip = textBoxIp.Text.ToString();
-            int id = Convert.ToInt32(textBoxLab.Text.ToString());
             try
             {
+                int id;
+                using (var labContext = new LaboratorioContext(_DB))
+                {
+                    id = labContext.Laboratorios.FirstOrDefault(s => s.Nome.Contains(textBoxLab.Text.ToString())).Id;
+                }
                 using (var maqContext = new MaquinaContext(_DB))
                 {
                     maqContext.Maquinas.Add(maq = new Maquina(nome, ip, id));
