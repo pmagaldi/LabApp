@@ -17,6 +17,7 @@ namespace LabApp
         public static string Labname { get;internal set; }
         public static int idGrupo { get; internal set; }
         public static string[] Lista { get;internal set; }
+        public static string _DB { get; set; } = "RDSDBContext";
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -44,16 +45,16 @@ namespace LabApp
         {
             try
             {
-                using (var Labcont = new LaboratorioContext("RDSDBContext"))
+                using (var Labcont = new LaboratorioContext(_DB))
                 {
                     var lab = Labcont.Laboratorios.FirstOrDefault(c => c.Id == maq.IdLab);
                     Labname = lab.Nome;
                     idGrupo = lab.IdGrupoErro;
-                    using (var GrupoCont = new GErrosContext("RDSDBContext"))
+                    using (var GrupoCont = new GErrosContext(_DB))
                     {
                         IList<GruposDeErro> TodoErros = GrupoCont.GruposErro.Where(c => c.IdGrupo == lab.IdGrupoErro).ToList();
                         List<int> idDeTodoErros = TodoErros.Select(s => s.IdTipoErro).ToList();
-                        using (var tErros = new TErrosContext("RDSDBContext"))
+                        using (var tErros = new TErrosContext(_DB))
                         {
                             IList<TiposDeErro> tiposDeErros = tErros.TiposErro.ToList();
                             Lista = new string[idDeTodoErros.Count];
@@ -80,7 +81,7 @@ namespace LabApp
 
         static int pegarIdLab(string nome, string ip)
         {
-            using (var repo = new MaquinaContext("RDSDBContext"))
+            using (var repo = new MaquinaContext(_DB))
             {
                 var maquina = repo.Maquinas.FirstOrDefault(c => c.Ip == ip);
                 return maquina.IdLab;
@@ -114,11 +115,11 @@ namespace LabApp
             try
             {
                 int index;
-                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                using (var tipoContext = new TErrosContext(_DB))
                 {
                     index = tipoContext.TiposErro.Where(s => s.Nome == texto).FirstOrDefault().Id;
                 }
-                using (var regContext = new RegistroContext("RDSDBContext"))
+                using (var regContext = new RegistroContext(_DB))
                 {
                     regContext.Registros.Add(new Registro(Labname, Computername, Ip, index, idGrupo));
                     regContext.SaveChanges();

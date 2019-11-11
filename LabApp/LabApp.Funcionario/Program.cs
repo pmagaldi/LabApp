@@ -11,6 +11,7 @@ namespace LabApp.Funcionario
     static class Program
     {
         public static string[] Lista;
+        public static string _DB { get; set; } = "RDSDBContext";
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -27,7 +28,7 @@ namespace LabApp.Funcionario
         {
             try
             {
-                using (var registroContext = new RegistroContext("RDSDBContext"))
+                using (var registroContext = new RegistroContext(_DB))
                 {
                     IList<string> registros = registroContext.Registros.Select(c => "Maq: " + c.NomeMaq + " Id Erro: " + c.IdTipoErro.ToString()).ToList();
                     Lista = new string[registros.Count];
@@ -53,7 +54,7 @@ namespace LabApp.Funcionario
         {
             try
             {
-                using (var registroContext = new RegistroContext("RDSDBContext"))
+                using (var registroContext = new RegistroContext(_DB))
                 {
                     var idIndex = item.IndexOf("I");
                     var index = idIndex - 1;

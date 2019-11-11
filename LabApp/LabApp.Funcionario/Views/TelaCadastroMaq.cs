@@ -14,6 +14,7 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaCadastroMaq : Form
     {
+        public string _DB { get; set; } = "RDSDBContext";
         Maquina maq;
         public TelaCadastroMaq()
         {
@@ -27,7 +28,7 @@ namespace LabApp.Funcionario.Views
             int id = Convert.ToInt32(textBoxLab.Text.ToString());
             try
             {
-                using (var maqContext = new MaquinaContext("RDSDBContext"))
+                using (var maqContext = new MaquinaContext(_DB))
                 {
                     maqContext.Maquinas.Add(maq = new Maquina(nome, ip, id));
                     maqContext.SaveChanges();
@@ -47,7 +48,7 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    using (var maqContext = new MaquinaContext(_DB))
                     {
                         var item = maqContext.Maquinas.FirstOrDefault(c => c.Ip == textBoxIp.Text.ToString());
                         if(item != null)
@@ -69,7 +70,7 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    using (var maqContext = new MaquinaContext(_DB))
                     {
                         var item = maqContext.Maquinas.FirstOrDefault(c => c.Ip == textBoxIp.Text.ToString());
                         if (item != null)
@@ -91,7 +92,7 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    using (var maqContext = new MaquinaContext(_DB))
                     {
                         var item = maqContext.Maquinas.FirstOrDefault(c => c.Nome == textBoxNome.Text.ToString());
                         if (item != null)

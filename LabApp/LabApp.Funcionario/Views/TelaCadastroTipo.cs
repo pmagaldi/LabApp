@@ -14,6 +14,7 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaCadastroTipo : Form
     {
+        public string _DB { get; set; } = "RDSDBContext";
         public TelaCadastroTipo()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace LabApp.Funcionario.Views
         {
             try
             {
-                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                using (var tipoContext = new TErrosContext(_DB))
                 {
                     string nome = textBoxNome.Text.ToString();
                     string descricao = textBoxDescricao.Text.ToString();
