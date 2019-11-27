@@ -83,9 +83,11 @@ namespace LabApp.Funcionario
         {
             foreach (var item in checkedListBoxRegistro.SelectedItems)
             {
-                Program.deletarRegistro(item.ToString());
-                checkedListBoxRegistro.Items.Remove(item);
+                Program.deletarRegistro(item.ToString());                
             }
+            var lista = Program.pegarLista();
+            checkedListBoxRegistro.Items.Clear();
+            checkedListBoxRegistro.Items.AddRange(lista);
         }
     }
 }

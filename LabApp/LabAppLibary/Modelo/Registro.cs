@@ -13,7 +13,7 @@ namespace LabAppLibrary.Modelo
         public string NomeLab { get; internal set; }
         public string NomeMaq { get; set; }
         public DateTime Data { get; protected set; }
-        protected string Ip { get;  set; }
+        public string Ip { get;  set; }
         public int IdTipoErro { get; set; }
         public int IdGrupoErro { get; set; }
 
@@ -24,7 +24,7 @@ namespace LabAppLibrary.Modelo
             Ip = ip;
             IdTipoErro = idTipo;
             IdGrupoErro = idGrupo;
-            Data = DateTime.Today;
+            Data = DateTime.Now;
         }
 
         public Registro()

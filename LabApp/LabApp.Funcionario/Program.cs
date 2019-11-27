@@ -24,13 +24,13 @@ namespace LabApp.Funcionario
             Application.Run(new TelaPrincipal(Lista));
         }
 
-        private static void pegarLista()
+        internal static string[] pegarLista()
         {
             try
             {
                 using (var registroContext = new RegistroContext(_DB))
                 {
-                    IList<string> registros = registroContext.Registros.Select(c => "Maq: " + c.NomeMaq + " Erro: " + c.IdTipoErro.ToString()).ToList();
+                    IList<string> registros = registroContext.Registros.Select(c => "Maq: " + c.NomeMaq + " Erro: " + c.IdTipoErro.ToString() + " Ip: "+c.Ip.ToString()).ToList();
                     Lista = new string[registros.Count];
                     int index = 0;
                     foreach (var item in registros)
@@ -48,6 +48,7 @@ namespace LabApp.Funcionario
                     Lista[0] = "Não tem registro";
                 }
             }
+            return Lista;
         }
 
         internal static void deletarRegistro(string item)
@@ -56,9 +57,12 @@ namespace LabApp.Funcionario
             {
                 using (var registroContext = new RegistroContext(_DB))
                 {
-                    var idIndex = item.IndexOf("I");
-                    var index = idIndex - 1;
-                    Registro reg = registroContext.Registros.FirstOrDefault(s => s.NomeMaq == item.Substring(5, index));
+                    var indexIp = item.IndexOf("p") + 3;
+                    var indexTipo = item.IndexOf("Erro")+6;
+                    var ip = item.Substring(indexIp);
+                    var substring = item.Substring(indexTipo, 1);
+                    var tipo = Convert.ToInt32(item.Substring(indexTipo, 1));
+                    var reg = registroContext.Registros.Where(s => s.Ip == ip && s.IdTipoErro == tipo).FirstOrDefault();
                     registroContext.Registros.Remove(reg);
                     registroContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
