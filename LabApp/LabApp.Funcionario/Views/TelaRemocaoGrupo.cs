@@ -15,6 +15,7 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaRemocaoGrupo : Form
     {
+        public string _DB { get; set; } = "RDSDBContext";
         public TelaRemocaoGrupo()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace LabApp.Funcionario.Views
             comboBoxGrupos.Items.Clear();
             try
             {
-                using (var grupoContext = new GErrosContext("RDSDBContext"))
+                using (var grupoContext = new GErrosContext(_DB))
                 {
                     IList<GruposDeErro> Grupos = grupoContext.GruposErro.ToList();
                     foreach (var item in Grupos)
@@ -45,7 +46,7 @@ namespace LabApp.Funcionario.Views
         {
             try
             {
-                using (var grupoContext = new GErrosContext("RDSDBContext"))
+                using (var grupoContext = new GErrosContext(_DB))
                 {
                     var texto = comboBoxGrupos.SelectedText;
                     var idGrupo = Convert.ToInt32(texto.Substring(9, 1));

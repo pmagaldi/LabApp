@@ -15,6 +15,8 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaRemocaoTipo : Form
     {
+        public string _DB { get; set; } = "RDSDBContext";
+
         public TelaRemocaoTipo()
         {
             InitializeComponent();
@@ -25,7 +27,7 @@ namespace LabApp.Funcionario.Views
             comboBoxTipos.Items.Clear();
             try
             {
-                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                using (var tipoContext = new TErrosContext(_DB))
                 {
                     IList<TiposDeErro> tipos = tipoContext.TiposErro.ToList();
                     foreach (var item in tipos)
@@ -45,7 +47,7 @@ namespace LabApp.Funcionario.Views
         {
             try
             {
-                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                using (var tipoContext = new TErrosContext(_DB))
                 {
                     var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Nome == comboBoxTipos.SelectedText);
                     tipoContext.TiposErro.Remove(tipo);

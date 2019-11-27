@@ -14,6 +14,7 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaCadastroLab : Form
     {
+        public string _DB { get; set; } = "RDSDBContext";
         List<Laboratorio> lab;
         public TelaCadastroLab()
         {
@@ -27,7 +28,7 @@ namespace LabApp.Funcionario.Views
             int id = Convert.ToInt32(textBoxGrupo.Text.ToString());
             try
             {
-                using (var labContext = new LaboratorioContext("RDSDBContext"))
+                using (var labContext = new LaboratorioContext(_DB))
                 {
                     labContext.Laboratorios.Add(new Laboratorio(nome, qtd, id));
                     labContext.SaveChanges();
@@ -43,12 +44,11 @@ namespace LabApp.Funcionario.Views
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            string contexto = "RDSDBContext";
             if (checkBoxNome.Checked)
             {                
                 try
                 {
-                    using (var laboratorioContext = new LaboratorioContext(contexto))
+                    using (var laboratorioContext = new LaboratorioContext(_DB))
                     {
                         var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
                         var item = lab.FirstOrDefault(c => c.Id == id);
@@ -71,7 +71,7 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-                    using (var laboratorioContext = new LaboratorioContext(contexto))
+                    using (var laboratorioContext = new LaboratorioContext(_DB))
                     {
                         var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
                         var item = lab.FirstOrDefault(c => c.Id == id);
@@ -94,7 +94,7 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-                    using (var laboratorioContext = new LaboratorioContext(contexto))
+                    using (var laboratorioContext = new LaboratorioContext(_DB))
                     {
                         var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
                         var item = lab.FirstOrDefault(c => c.Id == id);
@@ -119,7 +119,7 @@ namespace LabApp.Funcionario.Views
         {
             try
             {
-                using (var labContext = new LaboratorioContext("RDSDBContext"))
+                using (var labContext = new LaboratorioContext(_DB))
                 {
                     lab = labContext.Laboratorios.ToList();
                     //List<string> nomes = labContext.Laboratorios.Select(c => c.Nome).ToList();

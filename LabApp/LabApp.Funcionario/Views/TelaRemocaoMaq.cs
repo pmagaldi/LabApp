@@ -15,6 +15,7 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaRemocaoMaq : Form
     {
+        public string _DB { get; set; } = "RDSDBContext";
         public TelaRemocaoMaq()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace LabApp.Funcionario.Views
             comboBoxMaqs.Items.Clear();
             try
             {
-                using (var maqContext = new MaquinaContext("RDSDBContext"))
+                using (var maqContext = new MaquinaContext(_DB))
                 {
                     IList<Maquina> maquinas = maqContext.Maquinas.ToList();
                     foreach (var item in maquinas)
@@ -45,7 +46,7 @@ namespace LabApp.Funcionario.Views
         {
             try
             {
-                using (var maqContext = new MaquinaContext("RDSDBContext"))
+                using (var maqContext = new MaquinaContext(_DB))
                 {
                     var Maq = maqContext.Maquinas.FirstOrDefault(s => s.Nome == comboBoxMaqs.SelectedText);
                     maqContext.Maquinas.Remove(Maq);

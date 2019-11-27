@@ -14,8 +14,8 @@ namespace LabApp.Funcionario.Views
 {
     public partial class TelaCadastroMaq : Form
     {
+        public string _DB { get; set; } = "RDSDBContext";
         Maquina maq;
-        string _bancodeDAdos = "RDSDBContext";
         public TelaCadastroMaq()
         {
             InitializeComponent();
@@ -25,14 +25,14 @@ namespace LabApp.Funcionario.Views
         {
             string nome = textBoxNome.Text.ToString();
             string ip = textBoxIp.Text.ToString();
-            int id;
             try
             {
-                using (var labContext = new LaboratorioContext(_bancodeDAdos))
+                int id;
+                using (var labContext = new LaboratorioContext(_DB))
                 {
-                    id = labContext.Laboratorios.Where(s => s.Nome.Contains(textBoxLab.Text.ToString())).FirstOrDefault().Id;
+                    id = labContext.Laboratorios.FirstOrDefault(s => s.Nome.Contains(textBoxLab.Text.ToString())).Id;
                 }
-                using (var maqContext = new MaquinaContext(_bancodeDAdos))
+                using (var maqContext = new MaquinaContext(_DB))
                 {
                     maqContext.Maquinas.Add(maq = new Maquina(nome, ip, id));
                     maqContext.SaveChanges();
@@ -52,7 +52,7 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    using (var maqContext = new MaquinaContext(_DB))
                     {
                         var item = maqContext.Maquinas.FirstOrDefault(c => c.Ip == textBoxIp.Text.ToString());
                         if(item != null)
@@ -74,7 +74,7 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    using (var maqContext = new MaquinaContext(_DB))
                     {
                         var item = maqContext.Maquinas.FirstOrDefault(c => c.Ip == textBoxIp.Text.ToString());
                         if (item != null)
@@ -96,7 +96,7 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
-                    using (var maqContext = new MaquinaContext("RDSDBContext"))
+                    using (var maqContext = new MaquinaContext(_DB))
                     {
                         var item = maqContext.Maquinas.FirstOrDefault(c => c.Nome == textBoxNome.Text.ToString());
                         if (item != null)

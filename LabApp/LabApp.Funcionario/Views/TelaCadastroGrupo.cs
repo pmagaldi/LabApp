@@ -13,7 +13,8 @@ using LabAppLibrary.Modelo;
 namespace LabApp.Funcionario.Views
 {
     public partial class TelaCadastroGrupo : Form
-    {  
+    {
+        public string _DB { get; set; } = "RDSDBContext";
         public TelaCadastroGrupo()
         {                       
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace LabApp.Funcionario.Views
         {
             try
             {
-                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                using (var tipoContext = new TErrosContext(_DB))
                 {
                     var lista = tipoContext.TiposErro.ToList();
                     foreach (var item in lista)
@@ -45,11 +46,11 @@ namespace LabApp.Funcionario.Views
             try
             {
                 int idTipo;
-                using (var tipoContext = new TErrosContext("RDSDBContext"))
+                using (var tipoContext = new TErrosContext(_DB))
                 {
                     idTipo = tipoContext.TiposErro.Where(s => s.Nome == comboBoxTipos.SelectedText).FirstOrDefault().Id ;
                 }
-                using (var grupoContext = new GErrosContext("RDSDBContext"))
+                using (var grupoContext = new GErrosContext(_DB))
                 {
                     int idGrupo = Convert.ToInt32(textBoxIdGrupo.Text.ToString());
                     grupoContext.GruposErro.Add(new GruposDeErro(idGrupo, idTipo));
