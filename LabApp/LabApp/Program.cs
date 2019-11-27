@@ -101,7 +101,10 @@ namespace LabApp
                     break;
                 }
             }
-            return Ip.ToString();
+            if (Ip != null)
+                return Ip.ToString();
+            else
+                return "Não cadastrado";
         }
 
         static string pegarNomePC()

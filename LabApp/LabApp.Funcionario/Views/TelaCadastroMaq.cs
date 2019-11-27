@@ -15,6 +15,7 @@ namespace LabApp.Funcionario.Views
     public partial class TelaCadastroMaq : Form
     {
         Maquina maq;
+        string _bancodeDAdos = "RDSDBContext";
         public TelaCadastroMaq()
         {
             InitializeComponent();
@@ -24,10 +25,14 @@ namespace LabApp.Funcionario.Views
         {
             string nome = textBoxNome.Text.ToString();
             string ip = textBoxIp.Text.ToString();
-            int id = Convert.ToInt32(textBoxLab.Text.ToString());
+            int id;
             try
             {
-                using (var maqContext = new MaquinaContext("RDSDBContext"))
+                using (var labContext = new LaboratorioContext(_bancodeDAdos))
+                {
+                    id = labContext.Laboratorios.Where(s => s.Nome.Contains(textBoxLab.Text.ToString())).FirstOrDefault().Id;
+                }
+                using (var maqContext = new MaquinaContext(_bancodeDAdos))
                 {
                     maqContext.Maquinas.Add(maq = new Maquina(nome, ip, id));
                     maqContext.SaveChanges();
