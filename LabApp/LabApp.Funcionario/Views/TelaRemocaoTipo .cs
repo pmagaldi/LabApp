@@ -49,7 +49,8 @@ namespace LabApp.Funcionario.Views
             {
                 using (var tipoContext = new TErrosContext(_DB))
                 {
-                    var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Nome == comboBoxTipos.SelectedText);
+                    var id = tipoContext.TiposErro.Where(s => s.Nome == comboBoxTipos.SelectedItem.ToString()).FirstOrDefault().Id;
+                    var tipo = tipoContext.TiposErro.FirstOrDefault(s => s.Id == id);
                     tipoContext.TiposErro.Remove(tipo);
                     tipoContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");

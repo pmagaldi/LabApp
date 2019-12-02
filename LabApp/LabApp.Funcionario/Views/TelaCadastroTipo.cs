@@ -28,7 +28,8 @@ namespace LabApp.Funcionario.Views
                 {
                     string nome = textBoxNome.Text.ToString();
                     string descricao = textBoxDescricao.Text.ToString();
-                    tipoContext.TiposErro.Add(new TiposDeErro(nome, descricao));
+                    int prioridade = Convert.ToInt32(textBoxPrio.Text.ToString());
+                    tipoContext.TiposErro.Add(new TiposDeErro(nome, descricao,prioridade));
                     tipoContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                 }

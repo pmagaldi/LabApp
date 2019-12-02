@@ -118,13 +118,16 @@ namespace LabApp
             try
             {
                 int index;
+                int preferencia;
                 using (var tipoContext = new TErrosContext(_DB))
                 {
-                    index = tipoContext.TiposErro.Where(s => s.Nome == texto).FirstOrDefault().Id;
+                    var tipo = tipoContext.TiposErro.Where(s => s.Nome == texto).FirstOrDefault();
+                    index = tipo.Id;
+                    preferencia = tipo.Prioridade;
                 }
                 using (var regContext = new RegistroContext(_DB))
                 {
-                    regContext.Registros.Add(new Registro(Labname, Computername, Ip, index, idGrupo));
+                    regContext.Registros.Add(new Registro(Labname, Computername, Ip, index, idGrupo,preferencia));
                     regContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");
                 }

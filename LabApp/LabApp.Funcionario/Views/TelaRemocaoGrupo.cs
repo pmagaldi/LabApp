@@ -48,7 +48,7 @@ namespace LabApp.Funcionario.Views
             {
                 using (var grupoContext = new GErrosContext(_DB))
                 {
-                    var texto = comboBoxGrupos.SelectedText;
+                    var texto = comboBoxGrupos.SelectedItem.ToString();
                     var idGrupo = Convert.ToInt32(texto.Substring(9, 1));
                     var idTipo = Convert.ToInt32(texto.Substring(19,1));
                     var grupo = grupoContext.GruposErro.Where(s => s.IdGrupo == idGrupo && s.IdTipoErro == idTipo).FirstOrDefault();

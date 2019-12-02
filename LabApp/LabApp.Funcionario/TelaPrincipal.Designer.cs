@@ -124,6 +124,7 @@
             // checkedListBoxRegistro
             // 
             this.checkedListBoxRegistro.FormattingEnabled = true;
+            this.checkedListBoxRegistro.HorizontalScrollbar = true;
             this.checkedListBoxRegistro.Location = new System.Drawing.Point(37, 12);
             this.checkedListBoxRegistro.Name = "checkedListBoxRegistro";
             this.checkedListBoxRegistro.ScrollAlwaysVisible = true;

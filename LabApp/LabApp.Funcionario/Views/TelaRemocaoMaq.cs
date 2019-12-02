@@ -48,7 +48,8 @@ namespace LabApp.Funcionario.Views
             {
                 using (var maqContext = new MaquinaContext(_DB))
                 {
-                    var Maq = maqContext.Maquinas.FirstOrDefault(s => s.Nome == comboBoxMaqs.SelectedText);
+                    var id = maqContext.Maquinas.Where(s => s.Nome == comboBoxMaqs.SelectedItem.ToString()).FirstOrDefault().id;
+                    var Maq = maqContext.Maquinas.Where(s => s.id == id).FirstOrDefault();
                     maqContext.Maquinas.Remove(Maq);
                     maqContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");

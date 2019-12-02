@@ -8,6 +8,7 @@ namespace LabAppLibrary.Modelo
     {
         public int Id { get; set; }
         public string Nome { get; set; }
+        public int Prioridade { get; set; }
         public string Descricao { get; set; }
 
         /// <summary>
@@ -15,13 +16,15 @@ namespace LabAppLibrary.Modelo
         /// </summary>
         /// <param name="nome"></param>
         /// <param name="texto"></param>
+        /// <param name="prio"></param>
 
-        public TiposDeErro(string nome, string texto)
+        public TiposDeErro(string nome, string texto, int prio)
         {
-            if(nome == null || texto == null)
+            if(nome == null || texto == null || prio == 0)
                 throw new ArgumentException("Erro nos argumentos do construtor da classe TiposDeErro");
             Nome = nome;
             Descricao = texto;
+            Prioridade = prio;
         }
 
         public TiposDeErro()

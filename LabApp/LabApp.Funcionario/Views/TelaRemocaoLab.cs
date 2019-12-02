@@ -48,7 +48,8 @@ namespace LabApp.Funcionario.Views
             {
                 using (var labContext = new LaboratorioContext(_DB))
                 {
-                    var lab = labContext.Laboratorios.Where(s => s.Nome == comboBoxLabs.SelectedText).FirstOrDefault();
+                    var id = labContext.Laboratorios.Where(s => s.Nome == comboBoxLabs.SelectedItem.ToString()).FirstOrDefault().Id;
+                    var lab = labContext.Laboratorios.Where(s => s.Id == id).FirstOrDefault();
                     labContext.Laboratorios.Remove(lab);
                     labContext.SaveChanges();
                     MessageBox.Show("Realizado com sucesso!");

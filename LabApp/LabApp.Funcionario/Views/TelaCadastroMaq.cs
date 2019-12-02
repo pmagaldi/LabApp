@@ -74,12 +74,17 @@ namespace LabApp.Funcionario.Views
             {
                 try
                 {
+                    int id;
+                    using (var labContext = new LaboratorioContext(_DB))
+                    {
+                        id = labContext.Laboratorios.Where(s => s.Nome.Contains(textBoxLab.Text.ToString())).FirstOrDefault().Id;
+                    }
                     using (var maqContext = new MaquinaContext(_DB))
                     {
                         var item = maqContext.Maquinas.FirstOrDefault(c => c.Ip == textBoxIp.Text.ToString());
                         if (item != null)
-                        {                            
-                            item.MudarIdLab(Convert.ToInt32(textBoxLab.Text.ToString()));
+                        {
+                            item.MudarIdLab(id);
                             maqContext.Entry(item).State = System.Data.Entity.EntityState.Modified;
                             maqContext.SaveChanges();
                             MessageBox.Show("Realizado com sucesso!");

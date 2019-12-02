@@ -16,8 +16,9 @@ namespace LabAppLibrary.Modelo
         public string Ip { get;  set; }
         public int IdTipoErro { get; set; }
         public int IdGrupoErro { get; set; }
+        public int Prioridade { get; set; }
 
-        public Registro(string lab, string maq, string ip, int idTipo, int idGrupo)
+        public Registro(string lab, string maq, string ip, int idTipo, int idGrupo, int prio)
         {
             NomeLab = lab;
             NomeMaq = maq;
@@ -25,6 +26,7 @@ namespace LabAppLibrary.Modelo
             IdTipoErro = idTipo;
             IdGrupoErro = idGrupo;
             Data = DateTime.Now;
+            Prioridade = prio;
         }
 
         public Registro()
