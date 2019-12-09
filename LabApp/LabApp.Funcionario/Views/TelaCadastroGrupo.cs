@@ -48,7 +48,9 @@ namespace LabApp.Funcionario.Views
                 int idTipo;
                 using (var tipoContext = new TErrosContext(_DB))
                 {
-                    idTipo = tipoContext.TiposErro.Where(s => s.Nome == comboBoxTipos.SelectedText).FirstOrDefault().Id ;
+                    var index = comboBoxTipos.SelectedItem.ToString().IndexOf("Nome:") + 6;
+                    var tipo = comboBoxTipos.SelectedItem.ToString().Substring(index);
+                    idTipo = tipoContext.TiposErro.Where(s => s.Nome == tipo).FirstOrDefault().Id ;
                 }
                 using (var grupoContext = new GErrosContext(_DB))
                 {
