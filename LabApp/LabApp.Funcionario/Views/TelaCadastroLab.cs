@@ -43,14 +43,14 @@ namespace LabApp.Funcionario.Views
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
-        {
+       {
             if (checkBoxNome.Checked)
             {                
                 try
                 {
                     using (var laboratorioContext = new LaboratorioContext(_DB))
                     {
-                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
+                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedItem.ToString()).First().Id;
                         var item = lab.FirstOrDefault(c => c.Id == id);
                         if (item != null)
                         {
@@ -73,7 +73,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(_DB))
                     {
-                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
+                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedItem.ToString()).First().Id;
                         var item = lab.FirstOrDefault(c => c.Id == id);
                         if (item != null)
                         {
@@ -96,7 +96,7 @@ namespace LabApp.Funcionario.Views
                 {
                     using (var laboratorioContext = new LaboratorioContext(_DB))
                     {
-                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedText).First().Id;
+                        var id = lab.Where(c => c.Nome == comboBoxLabs.SelectedItem.ToString()).First().Id;
                         var item = lab.FirstOrDefault(c => c.Id == id);
                         if (item != null)
                         {
@@ -121,6 +121,7 @@ namespace LabApp.Funcionario.Views
             {
                 using (var labContext = new LaboratorioContext(_DB))
                 {
+                    comboBoxLabs.Items.Clear();
                     lab = labContext.Laboratorios.ToList();
                     //List<string> nomes = labContext.Laboratorios.Select(c => c.Nome).ToList();
                     //string[] Lista = new string[nomes.Count];
